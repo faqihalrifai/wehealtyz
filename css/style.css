@@ -15,46 +15,23 @@
 }
 
 /* Base Styles */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-size: 1.6rem; /* 16px */
-}
-
-body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--dark);
-    background: linear-gradient(135deg, #f0ffff 0%, #e0ffff 50%, #afeeee 100%);
+    background-color: #f5f7fa;
+    color: #333;
     line-height: 1.6;
-    scroll-behavior: smooth;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><path fill="%2340e0d0" opacity="0.1" d="M0,0V800H1200V0C1050,150,900,200,600,400C300,600,150,650,0,800Z"/></svg>');
-    background-size: cover;
-    z-index: -1;
 }
 
 .container {
-    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 20px;
 }
 
 /* Header Styles */
@@ -180,128 +157,42 @@ nav a:hover::after {
 }
 
 /* Section Styles */
-.section {
-    padding: 80px 0;
-    background: rgba(64, 224, 208, 0.15);
-    border: 1px solid #afeeee;
-    backdrop-filter: blur(5px);
-    border-radius: var(--radius);
-    margin-bottom: 30px;
-    opacity: 0;
-    animation: fadeIn 1s ease-in forwards;
+.services-section {
+    padding: 40px 0;
 }
-
-    .section-title {
-    font-size: clamp(2.4rem, 5vw, 3.2rem); 
-    /* Minimal 2.4rem, responsif 5% viewport width, maksimal 3.2rem */
-}
-
-.section:nth-child(1) { animation-delay: 0.3s; }
-.section:nth-child(2) { animation-delay: 0.4s; }
-.section:nth-child(3) { animation-delay: 0.5s; }
-.section:nth-child(4) { animation-delay: 0.6s; }
 
 .section-title {
     text-align: center;
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 50px;
-    color: var(--primary-dark);
-    position: relative;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-size: 2rem;
 }
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: var(--primary);
-    border-radius: 2px;
-}
-
-/* Card Styles */
-.card-container {
+.cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 30px;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: var(--radius);
-    text-align: center;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-    border-top: 4px solid var(--primary);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.card i {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-    animation: float 3s ease-in-out infinite;
-}
-
-.card h3 {
-    margin: 10px 0;
-    color: var(--primary-dark);
-}
-
-.card p {
-    color: var(--gray);
-    margin-top: 10px;
-}
-
-.card ul {
-    text-align: left;
-    margin-top: 15px;
-    padding-left: 20px;
-    color: var(--gray);
-}
-
-.card ul li {
-    margin-bottom: 8px;
+    justify-content: center;
 }
 
 .health-card {
     display: block;
     text-decoration: none;
-    color: #333;
     background: white;
-    border-radius: 12px;
-    padding: 25px;
+    border-radius: 15px;
+    padding: 30px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    margin: 15px;
-    overflow: hidden;
-    position: relative;
+    color: #333;
 }
 
 .health-card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    text-decoration: none;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 .card-icon {
     font-size: 2.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     transition: transform 0.3s ease;
 }
 
@@ -309,39 +200,40 @@ nav a:hover::after {
     transform: scale(1.1);
 }
 
-.card-body h3 {
-    margin: 10px 0;
+.card-content h3 {
+    margin-bottom: 15px;
     color: #2c3e50;
+    font-size: 1.5rem;
 }
 
-.card-body p {
+.card-content p {
     color: #7f8c8d;
-    font-size: 0.9rem;
     margin-bottom: 20px;
 }
 
 .card-badge {
     display: inline-block;
-    background: #f1c40f;
-    color: white;
-    padding: 3px 10px;
+    padding: 5px 15px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: bold;
+    color: white;
 }
 
-/* Warna khusus untuk setiap card */
-.food-card .card-icon { color: #e74c3c; }
-.food-card .card-badge { background: #e74c3c; }
+/* Warna Khusus untuk Setiap Card */
+.food-card .card-icon,
+.food-card .card-badge {
+    color: #e74c3c;
+}
 
-.sport-card .card-icon { color: #3498db; }
-.sport-card .card-badge { background: #3498db; }
+.sport-card .card-icon,
+.sport-card .card-badge {
+    color: #3498db;
+}
 
-.skincare-card .card-icon { color: #9b59b6; }
-.skincare-card .card-badge { background: #9b59b6; }
-/* Health Tools Section */
-.health-tools {
-    background-color: #f5f7fa;
+.skincare-card .card-icon,
+.skincare-card .card-badge {
+    color: #9b59b6;
 }
 
 .tools-container {
@@ -764,6 +656,16 @@ footer {
 }
 
 /* Responsive Styles */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
 @media (max-width: 992px) {
     .hero h2 {
         font-size: 36px;
