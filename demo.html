@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEHEALTY - Demo Platform</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Demo-specific styles */
+        .demo-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .demo-feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .demo-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-role-selector {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin: 3rem auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+        }
+        
+        .demo-roles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-role {
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .demo-role:hover {
+            border-color: var(--primary);
+        }
+        
+        .demo-role.selected {
+            border-color: var(--primary);
+            background: rgba(0, 180, 183, 0.05);
+        }
+        
+        .demo-role i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-start-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto 0;
+            padding: 12px 25px;
+        }
+        
+        .demo-screenshots {
+            margin: 4rem 0;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .screenshot-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .screenshot-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <div class="demo-container">
+            <h1><i class="fas fa-user-secret"></i> WEHEALTY DEMO PLATFORM</h1>
+            <p>Experience the full features of WEHEALTY with our interactive demo</p>
+        </div>
+    </div>
+
+    <div class="demo-container">
+        <section class="demo-intro">
+            <h2>Discover WEHEALTY Features</h2>
+            <p>Our demo platform allows you to explore all the features of WEHEALTY with sample data. Select a role below to experience the system from different perspectives.</p>
+            
+            <div class="demo-features">
+                <div class="demo-feature-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health Tracking</h3>
+                    <p>Comprehensive health monitoring tools including BMI calculator, calorie tracker, and more.</p>
+                </div>
+                <div class="demo-feature-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Doctor Consultation</h3>
+                    <p>Simulated doctor-patient consultation system with AI assistance.</p>
+                </div>
+                <div class="demo-feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Real-time health analytics and reporting tools for administrators.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-role-selector">
+            <h2>Select Your Demo Role</h2>
+            <p>Choose a role to experience different features of the WEHEALTY platform:</p>
+            
+            <div class="demo-roles">
+                <div class="demo-role" data-role="admin">
+                    <i class="fas fa-user-cog"></i>
+                    <h3>Administrator</h3>
+                    <p>Full system access with all privileges</p>
+                    <ul>
+                        <li>User management</li>
+                        <li>System configuration</li>
+                        <li>Analytics dashboard</li>
+                    </ul>
+                </div>
+                <div class="demo-role" data-role="doctor">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Doctor</h3>
+                    <p>Medical professional access</p>
+                    <ul>
+                        <li>Patient records</li>
+                        <li>E-prescription</li>
+                        <li>Consultation system</li>
+                    </ul>
+                </div>
+                <div class="demo-role" data-role="patient">
+                    <i class="fas fa-user-injured"></i>
+                    <h3>Patient</h3>
+                    <p>Standard user access</p>
+                    <ul>
+                        <li>Health tracking</li>
+                        <li>Appointment booking</li>
+                        <li>Medical history</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button id="start-demo-btn" class="btn primary-btn demo-start-btn">
+                <i class="fas fa-play"></i> Start Demo
+            </button>
+        </section>
+
+        <section class="demo-screenshots">
+            <h2>Platform Preview</h2>
+            <p>Take a look at some screenshots from the WEHEALTY platform</p>
+            
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="../assets/images/demo/screenshot-dashboard.jpg" alt="Dashboard">
+                </div>
+                <div class="screenshot-item">
+                    <img src="../assets/images/demo/screenshot-bmi.jpg" alt="BMI Calculator">
+                </div>
+                <div class="screenshot-item">
+                    <img src="../assets/images/demo/screenshot-consult.jpg" alt="Consultation">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 WEHEALTY. All rights reserved. | <a href="../index.html">Back to Main Site</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/demo.js"></script>
+    <script>
+        // Demo role selection
+        document.querySelectorAll('.demo-role').forEach(role => {
+            role.addEventListener('click', function() {
+                document.querySelectorAll('.demo-role').forEach(r => r.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // Start demo button
+        document.getElementById('start-demo-btn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('.demo-role.selected');
+            if (selectedRole) {
+                const role = selectedRole.getAttribute('data-role');
+                
+                // Start demo in new tab
+                window.open(`../index.html?demo=${role}`, '_blank');
+                
+                // Or start demo in current window
+                // window.location.href = `../index.html?demo=${role}`;
+            } else {
+                alert('Please select a demo role first');
+            }
+        });
+        
+        // Auto-select role if coming from main site
+        const urlParams = new URLSearchParams(window.location.search);
+        const roleParam = urlParams.get('role');
+        if (roleParam) {
+            const roleElement = document.querySelector(`.demo-role[data-role="${roleParam}"]`);
+            if (roleElement) {
+                roleElement.classList.add('selected');
+                document.getElementById('start-demo-btn').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</html>

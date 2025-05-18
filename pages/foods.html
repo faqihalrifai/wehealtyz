@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEHEALTY - Makanan Sehat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00b4b7;
+            --primary-dark: #008b8b;
+            --secondary: #ff7e5f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f0ffff 0%, #e0ffff 50%, #afeeee 100%);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><path fill="%2340e0d0" opacity="0.1" d="M0,0V800H1200V0C1050,150,900,200,600,400C300,600,150,650,0,800Z"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--light);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 120px;
+            padding: 40px 0;
+        }
+
+        /* Food Category Section */
+        .food-category {
+            margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 180, 183, 0.2);
+        }
+
+        .food-category:hover {
+            box-shadow: 0 10px 30px rgba(0, 180, 183, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .food-category h3 {
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .food-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        /* Food Item Styles */
+        .food-item {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .food-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 180, 183, 0.2);
+        }
+
+        .food-item h4 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .food-item h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .food-item:hover h4::after {
+            width: 100%;
+        }
+
+        .food-image-container {
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+
+        .food-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .food-item:hover .food-image {
+            transform: scale(1.05);
+        }
+
+        .food-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .food-name {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .food-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Nutrition Table */
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .nutrition-table th, .nutrition-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .nutrition-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 500;
+        }
+
+        .nutrition-table tr:nth-child(even) {
+            background-color: rgba(0, 180, 183, 0.05);
+        }
+
+        .nutrition-table tr:hover {
+            background-color: rgba(0, 180, 183, 0.1);
+        }
+
+        .nutrition-table td:last-child {
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        /* Health Benefits */
+        .health-benefits {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 180, 183, 0.05);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .health-benefits h5 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .health-benefits h5 i {
+            color: var(--secondary);
+        }
+
+        .benefits-list {
+            list-style-type: none;
+        }
+
+        .benefits-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.6;
+        }
+
+        .benefits-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-about h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--light-gray);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .food-category {
+                padding: 30px;
+            }
+            
+            .food-item {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-dark);
+                padding: 20px 0;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            main {
+                margin-top: 100px;
+            }
+            
+            .food-category {
+                padding: 25px;
+            }
+            
+            .food-item {
+                padding: 20px;
+            }
+            
+            .food-image-container {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .food-category {
+                padding: 20px;
+            }
+            
+            .food-item {
+                padding: 15px;
+            }
+            
+            .food-name {
+                font-size: 1.5rem;
+            }
+            
+            .nutrition-table th, 
+            .nutrition-table td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Floating Action Button */
+        .fab-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 20px rgba(0, 180, 183, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 180, 183, 0.4);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: white;
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <main class="container">
+        <section id="vegetables" class="food-category">
+            <h3><i class="fas fa-carrot"></i> Sayuran Sehat</h3>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Bayam" class="food-image">
+                    <div class="food-name">Bayam</div>
+                </div>
+                
+                <p class="food-description">Bayam kaya akan zat besi, vitamin A, C, K, dan folat. Sangat baik untuk kesehatan mata dan meningkatkan sistem kekebalan tubuh. Bayam juga mengandung antioksidan yang membantu melawan radikal bebas dan mengurangi peradangan dalam tubuh.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan mata dengan lutein dan zeaxanthin</li>
+                        <li>Mengurangi risiko penyakit kronis dengan antioksidan</li>
+                        <li>Meningkatkan kesehatan tulang dengan vitamin K</li>
+                        <li>Membantu mengontrol tekanan darah dengan kalium</li>
+                        <li>Mendukung kesehatan kulit dan rambut dengan vitamin A</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>23 kcal</td>
+                            <td>1%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>2.9 g</td>
+                            <td>6%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>3.6 g</td>
+                            <td>1%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.2 g</td>
+                            <td>9%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-eye"></i> Vitamin A</td>
+                            <td>469 μg</td>
+                            <td>52%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bone"></i> Vitamin K</td>
+                            <td>483 μg</td>
+                            <td>402%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-tint"></i> Zat Besi</td>
+                            <td>2.7 mg</td>
+                            <td>15%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Brokoli" class="food-image">
+                    <div class="food-name">Brokoli</div>
+                </div>
+                
+                <p class="food-description">Brokoli mengandung sulforaphane yang memiliki sifat anti-kanker, serta kaya akan vitamin C, K, dan folat. Sayuran cruciferous ini juga kaya akan serat dan berbagai senyawa bioaktif yang mendukung detoksifikasi alami tubuh.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Mengurangi risiko kanker dengan sulforaphane</li>
+                        <li>Meningkatkan sistem kekebalan tubuh dengan vitamin C</li>
+                        <li>Mendukung kesehatan tulang dengan vitamin K dan kalsium</li>
+                        <li>Membantu pencernaan dengan serat tinggi</li>
+                        <li>Mendukung kesehatan jantung dengan antioksidan</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>34 kcal</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>2.8 g</td>
+                            <td>6%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>6.6 g</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.6 g</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>89.2 mg</td>
+                            <td>99%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bone"></i> Vitamin K</td>
+                            <td>101.6 μg</td>
+                            <td>85%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dna"></i> Folat</td>
+                            <td>63 μg</td>
+                            <td>16%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wortel" class="food-image">
+                    <div class="food-name">Wortel</div>
+                </div>
+                
+                <p class="food-description">Wortel terkenal dengan kandungan beta-karotennya yang tinggi, yang diubah tubuh menjadi vitamin A. Sayuran ini juga kaya akan serat, antioksidan, dan berbagai mineral penting yang mendukung kesehatan mata, kulit, dan sistem kekebalan tubuh.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan mata dengan beta-karoten</li>
+                        <li>Mengurangi risiko kanker dengan antioksidan</li>
+                        <li>Mendukung kesehatan kulit dan penyembuhan luka</li>
+                        <li>Membantu menurunkan kolesterol darah</li>
+                        <li>Mendukung kesehatan pencernaan dengan serat</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>41 kcal</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>0.9 g</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>9.6 g</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.8 g</td>
+                            <td>11%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-eye"></i> Vitamin A</td>
+                            <td>835 μg</td>
+                            <td>93%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>5.9 mg</td>
+                            <td>7%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Kalium</td>
+                            <td>320 mg</td>
+                            <td>7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1624300477446-d379e923eca8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2FsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Kale" class="food-image">
+                    <div class="food-name">Kale</div>
+                </div>
+                
+                <p class="food-description">Kale adalah salah satu sayuran paling padat nutrisi di planet ini, mengandung vitamin A, K, C, dan B6 dalam jumlah tinggi, serta mineral seperti mangan, kalsium, dan tembaga. Kale juga kaya akan antioksidan seperti quercetin dan kaempferol.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Sumber vitamin K terbaik untuk pembekuan darah</li>
+                        <li>Mengandung senyawa anti-kanker yang kuat</li>
+                        <li>Membantu menurunkan kolesterol darah</li>
+                        <li>Sumber beta-karoten untuk kesehatan mata</li>
+                        <li>Mendukung detoksifikasi alami tubuh</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>49 kcal</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>4.3 g</td>
+                            <td>9%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>8.8 g</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>3.6 g</td>
+                            <td>14%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>120 mg</td>
+                            <td>133%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bone"></i> Vitamin K</td>
+                            <td>704.8 μg</td>
+                            <td>587%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-eye"></i> Vitamin A</td>
+                            <td>9990 IU</td>
+                            <td>200%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/806904496/photo/tomatos-outdoors.webp?a=1&b=1&s=612x612&w=0&k=20&c=K-xrRIUUqLKW0TeKZIXD3c4heaxv49O6VcqORGOQ0FA=" alt="Tomat" class="food-image">
+                    <div class="food-name">Tomat</div>
+                </div>
+                
+                <p class="food-description">Tomat kaya akan likopen, antioksidan kuat yang memberikan warna merah dan dikaitkan dengan banyak manfaat kesehatan. Tomat juga mengandung vitamin C, kalium, folat, dan vitamin K. Likopen dalam tomat lebih mudah diserap ketika dimasak.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Melindungi terhadap kanker prostat dengan likopen</li>
+                        <li>Mendukung kesehatan jantung</li>
+                        <li>Melindungi kulit dari kerusakan sinar matahari</li>
+                        <li>Meningkatkan penglihatan dengan vitamin A</li>
+                        <li>Membantu mengontrol tekanan darah dengan kalium</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>18 kcal</td>
+                            <td>1%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>0.9 g</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>3.9 g</td>
+                            <td>1%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>1.2 g</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>13.7 mg</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-eye"></i> Vitamin A</td>
+                            <td>833 IU</td>
+                            <td>17%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Kalium</td>
+                            <td>237 mg</td>
+                            <td>5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/1135797096/photo/garlic-bulb-and-cloves-shot-from-above-on-rustic-brown-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=mDRka0BB8qG2GOjujfpwjztmBBIQRmvSw6yO4ll-eLU=" alt="Bawang Putih" class="food-image">
+                    <div class="food-name">Bawang Putih</div>
+                </div>
+                
+                <p class="food-description">Bawang putih telah digunakan selama berabad-abad sebagai obat alami. Mengandung senyawa sulfur seperti allicin yang memberikan banyak manfaat kesehatan. Bawang putih dapat meningkatkan sistem kekebalan tubuh dan membantu melawan penyakit.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan sistem kekebalan tubuh</li>
+                        <li>Menurunkan tekanan darah</li>
+                        <li>Mengurangi kadar kolesterol LDL</li>
+                        <li>Mengandung antioksidan yang melawan penuaan</li>
+                        <li>Membantu detoksifikasi logam berat dalam tubuh</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>149 kcal</td>
+                            <td>7%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>6.4 g</td>
+                            <td>13%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>33.1 g</td>
+                            <td>11%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.1 g</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>31.2 mg</td>
+                            <td>35%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Mangan</td>
+                            <td>1.7 mg</td>
+                            <td>84%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dna"></i> Vitamin B6</td>
+                            <td>1.2 mg</td>
+                            <td>62%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="fruits" class="food-category">
+            <h3><i class="fas fa-apple-alt"></i> Buah-buahan Sehat</h3>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1557925922-dac32ff4429f?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alpukat" class="food-image">
+                    <div class="food-name">Alpukat</div>
+                </div>
+                
+                <p class="food-description">Alpukat kaya akan lemak sehat, serat, dan berbagai vitamin serta mineral penting. Buah ini mengandung lemak tak jenuh tunggal yang baik untuk jantung dan membantu penyerapan nutrisi larut lemak dari makanan lain.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan jantung dengan lemak tak jenuh</li>
+                        <li>Membantu penyerapan nutrisi larut lemak</li>
+                        <li>Mengandung lebih banyak kalium daripada pisang</li>
+                        <li>Kaya serat untuk kesehatan pencernaan</li>
+                        <li>Mengurangi risiko sindrom metabolik</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>160 kcal</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>2 g</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemak</td>
+                            <td>15 g</td>
+                            <td>23%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>9 g</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>7 g</td>
+                            <td>28%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bone"></i> Vitamin K</td>
+                            <td>21 μg</td>
+                            <td>26%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dna"></i> Folat</td>
+                            <td>81 μg</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-heart"></i> Kalium</td>
+                            <td>485 mg</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1554795808-3231c32711cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Ymx1ZWJlcnJ5fGVufDB8fDB8fHww" alt="Blueberry" class="food-image">
+                    <div class="food-name">Blueberry</div>
+                </div>
+                
+                <p class="food-description">Blueberry termasuk buah dengan kandungan antioksidan tertinggi. Kaya akan flavonoid seperti anthocyanin yang memberikan warna biru dan manfaat kesehatan. Blueberry juga mengandung vitamin C, K, dan serat dalam jumlah yang baik.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan fungsi otak dan memori</li>
+                        <li>Melindungi dari kerusakan oksidatif dan penuaan</li>
+                        <li>Mengurangi risiko penyakit jantung</li>
+                        <li>Membantu mengontrol gula darah</li>
+                        <li>Mendukung kesehatan saluran kemih</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>57 kcal</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>0.7 g</td>
+                            <td>1%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>14.5 g</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.4 g</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>9.7 mg</td>
+                            <td>11%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bone"></i> Vitamin K</td>
+                            <td>19.3 μg</td>
+                            <td>24%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-brain"></i> Mangan</td>
+                            <td>0.3 mg</td>
+                            <td>17%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1722550376611-b97c27b8fc8c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGlzYW5nfGVufDB8fDB8fHww" alt="Pisang" class="food-image">
+                    <div class="food-name">Pisang</div>
+                </div>
+                
+                <p class="food-description">Pisang adalah sumber kalium yang sangat baik dan mengandung pektin, sejenis serat yang memberikan banyak manfaat. Buah ini juga kaya akan vitamin B6 dan C, serta berbagai senyawa tanaman yang bermanfaat.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Mengandung nutrisi yang mengatur kadar gula darah</li>
+                        <li>Meningkatkan kesehatan pencernaan dengan serat</li>
+                        <li>Membantu menurunkan berat badan</li>
+                        <li>Mendukung kesehatan jantung dengan kalium</li>
+                        <li>Mengandung antioksidan kuat</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>89 kcal</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>1.1 g</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>22.8 g</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.6 g</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Kalium</td>
+                            <td>358 mg</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dna"></i> Vitamin B6</td>
+                            <td>0.4 mg</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>8.7 mg</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://plus.unsplash.com/premium_photo-1675731118661-15dc54c11130?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3RyYXdiZXJyeXxlbnwwfHwwfHx8MA%3D%3D" alt="Stroberi" class="food-image">
+                    <div class="food-name">Stroberi</div>
+                </div>
+                
+                <p class="food-description">Stroberi sangat kaya akan vitamin C, mangan, folat, dan kalium. Buah ini mengandung antioksidan dan senyawa tanaman yang bermanfaat bagi kesehatan jantung dan pengendalian gula darah. Stroberi juga rendah kalori tetapi tinggi serat.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan jantung</li>
+                        <li>Membantu mengatur gula darah</li>
+                        <li>Mencegah sembelit dengan serat</li>
+                        <li>Mengandung antioksidan pelawan kanker</li>
+                        <li>Mendukung kesehatan kulit dengan vitamin C</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>32 kcal</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>0.7 g</td>
+                            <td>1%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>7.7 g</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2 g</td>
+                            <td>8%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>58.8 mg</td>
+                            <td>65%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dna"></i> Folat</td>
+                            <td>24 μg</td>
+                            <td>6%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-brain"></i> Mangan</td>
+                            <td>0.4 mg</td>
+                            <td>19%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://plus.unsplash.com/premium_photo-1667251755876-0bb2dbd25ad1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amVydWt8ZW58MHx8MHx8fDA%3D" alt="Jeruk" class="food-image">
+                    <div class="food-name">Jeruk</div>
+                </div>
+                
+                <p class="food-description">Jeruk terkenal dengan kandungan vitamin C-nya yang tinggi, tetapi juga mengandung banyak senyawa tanaman dan antioksidan lainnya. Buah ini rendah kalori tetapi kaya nutrisi, mendukung kesehatan kulit dan sistem kekebalan tubuh.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan sistem kekebalan tubuh dengan vitamin C</li>
+                        <li>Membantu mencegah anemia dengan meningkatkan penyerapan zat besi</li>
+                        <li>Mendukung kesehatan jantung</li>
+                        <li>Melindungi kulit dari kerusakan dan penuaan</li>
+                        <li>Mengurangi risiko batu ginjal</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>47 kcal</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>0.9 g</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>11.8 g</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>2.4 g</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>53.2 mg</td>
+                            <td>59%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Kalium</td>
+                            <td>169 mg</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-tint"></i> Kalsium</td>
+                            <td>40 mg</td>
+                            <td>4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/171582284/photo/kiwi.webp?a=1&b=1&s=612x612&w=0&k=20&c=fKbnrXqE2-awTlDcx9hYqo3mTEM4Umt9pM3FXnRahdc=" alt="Kiwi" class="food-image">
+                    <div class="food-name">Kiwi</div>
+                </div>
+                
+                <p class="food-description">Kiwi adalah buah padat nutrisi yang kaya akan vitamin C, vitamin K, vitamin E, folat, dan kalium. Buah ini juga mengandung antioksidan dan merupakan sumber serat yang baik. Kulit kiwi yang berbulu juga bisa dimakan dan mengandung nutrisi tambahan.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan pencernaan dengan enzim actinidin</li>
+                        <li>Mendukung sistem kekebalan tubuh dengan vitamin C</li>
+                        <li>Membantu mengelola tekanan darah dengan kalium</li>
+                        <li>Melindungi dari kerusakan oksidatif</li>
+                        <li>Mengurangi pembekuan darah dan meningkatkan sirkulasi</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>61 kcal</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>1.1 g</td>
+                            <td>2%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>14.7 g</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>3 g</td>
+                            <td>12%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-virus"></i> Vitamin C</td>
+                            <td>92.7 mg</td>
+                            <td>103%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bone"></i> Vitamin K</td>
+                            <td>40.3 μg</td>
+                            <td>34%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Kalium</td>
+                            <td>312 mg</td>
+                            <td>7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="nuts" class="food-category">
+            <h3><i class="fas fa-seedling"></i> Kacang-kacangan Sehat</h3>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://plus.unsplash.com/premium_photo-1668442665207-805ad297b76c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YWxtb25kfGVufDB8fDB8fHww" alt="Almond" class="food-image">
+                    <div class="food-name">Almond</div>
+                </div>
+                
+                <p class="food-description">Almond kaya akan vitamin E, magnesium, dan lemak sehat yang baik untuk jantung. Kacang ini juga mengandung protein nabati berkualitas tinggi dan serat yang membantu mengontrol gula darah dan meningkatkan rasa kenyang.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Sumber vitamin E antioksidan yang sangat baik</li>
+                        <li>Membantu mengontrol gula darah</li>
+                        <li>Menurunkan kadar kolesterol LDL</li>
+                        <li>Mengurangi rasa lapar dan membantu penurunan berat badan</li>
+                        <li>Mendukung kesehatan otak dengan riboflavin dan L-karnitin</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>579 kcal</td>
+                            <td>29%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>21.2 g</td>
+                            <td>42%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemak</td>
+                            <td>49.9 g</td>
+                            <td>77%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>21.6 g</td>
+                            <td>7%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>12.5 g</td>
+                            <td>50%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-alt"></i> Vitamin E</td>
+                            <td>25.6 mg</td>
+                            <td>171%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Magnesium</td>
+                            <td>270 mg</td>
+                            <td>68%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/1319130188/photo/canarium-nut.webp?a=1&b=1&s=612x612&w=0&k=20&c=NyKtvs_Byr6V_NdjsWPRwKQx7YcH5NdUntqfWJtWcf0=" alt="Kenari" class="food-image">
+                    <div class="food-name">Kenari</div>
+                </div>
+                
+                <p class="food-description">Kenari adalah satu-satunya kacang yang mengandung sejumlah besar asam alfa-linolenat (ALA), asam lemak omega-3 nabati. Kacang ini juga kaya akan antioksidan yang terkonsentrasi di kulit cokelat tipisnya, yang sering dikupas tetapi sebaiknya dimakan.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan otak dengan omega-3</li>
+                        <li>Mendukung kesehatan jantung</li>
+                        <li>Mengurangi peradangan dalam tubuh</li>
+                        <li>Mendukung kesehatan usus dengan meningkatkan bakteri baik</li>
+                        <li>Mengurangi risiko beberapa jenis kanker</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>654 kcal</td>
+                            <td>33%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>15.2 g</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemak</td>
+                            <td>65.2 g</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>13.7 g</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>6.7 g</td>
+                            <td>27%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-brain"></i> Omega-3 (ALA)</td>
+                            <td>9.1 g</td>
+                            <td>568%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Magnesium</td>
+                            <td>158 mg</td>
+                            <td>40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/2189258154/photo/background-texture-of-roasted-cashew-nut.webp?a=1&b=1&s=612x612&w=0&k=20&c=MraACNKXsOE1dufds6bgjcXMsydaw1OAoOJdD-NTxK0=" alt="Kacang Mete" class="food-image">
+                    <div class="food-name">Kacang Mete</div>
+                </div>
+                
+                <p class="food-description">Kacang mete mengandung lemak tak jenuh tunggal dan tak jenuh ganda yang sehat, serta protein, magnesium, tembaga, dan seng. Kacang ini lebih rendah lemak dibanding kebanyakan kacang lainnya dan mengandung pati resisten yang bermanfaat bagi kesehatan usus.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Mendukung kesehatan jantung dengan lemak sehat</li>
+                        <li>Membantu mengontrol gula darah</li>
+                        <li>Meningkatkan kesehatan tulang dengan magnesium dan tembaga</li>
+                        <li>Mendukung fungsi otak yang sehat</li>
+                        <li>Membantu penurunan berat badan dengan meningkatkan rasa kenyang</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>553 kcal</td>
+                            <td>28%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>18.2 g</td>
+                            <td>36%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemak</td>
+                            <td>43.9 g</td>
+                            <td>68%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>30.2 g</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>3.3 g</td>
+                            <td>13%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Magnesium</td>
+                            <td>292 mg</td>
+                            <td>73%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-copper"></i> Tembaga</td>
+                            <td>2.2 mg</td>
+                            <td>244%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/115947523/photo/pistachios.webp?a=1&b=1&s=612x612&w=0&k=20&c=co6RV97xfH5ArVFARHqGB5o04ibj7NmA9fBaRFILoM0=" alt="Pistachio" class="food-image">
+                    <div class="food-name">Pistachio</div>
+                </div>
+                
+                <p class="food-description">Pistachio adalah salah satu kacang dengan kandungan serat tertinggi. Kaya akan antioksidan seperti lutein dan zeaxanthin yang penting untuk kesehatan mata. Pistachio juga mengandung asam amino L-arginine yang bermanfaat bagi kesehatan pembuluh darah.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kesehatan mata dengan lutein dan zeaxanthin</li>
+                        <li>Mendukung kesehatan usus dengan serat tinggi</li>
+                        <li>Membantu mengontrol gula darah</li>
+                        <li>Meningkatkan kesehatan jantung</li>
+                        <li>Membantu manajemen berat badan dengan meningkatkan rasa kenyang</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>562 kcal</td>
+                            <td>28%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>20.3 g</td>
+                            <td>41%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemak</td>
+                            <td>45.4 g</td>
+                            <td>70%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>27.5 g</td>
+                            <td>9%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>10.3 g</td>
+                            <td>41%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-eye"></i> Lutein & Zeaxanthin</td>
+                            <td>1403 μg</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Vitamin B6</td>
+                            <td>1.7 mg</td>
+                            <td>85%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://media.istockphoto.com/id/1465630272/photo/raw-beans.webp?a=1&b=1&s=612x612&w=0&k=20&c=Y4KusDiH54okOwckhmB2fCDVbGX0FnjNssZIA7zERME=" alt="Kacang Brazil" class="food-image">
+                    <div class="food-name">Kacang Brazil</div>
+                </div>
+                
+                <p class="food-description">Kacang Brazil adalah sumber selenium terkaya di dunia, hanya satu kacang sudah memenuhi kebutuhan harian selenium. Mineral ini penting untuk fungsi tiroid dan sistem antioksidan tubuh. Kacang ini juga mengandung lemak sehat, protein, dan berbagai mineral penting.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Mendukung fungsi tiroid dengan selenium</li>
+                        <li>Meningkatkan sistem antioksidan tubuh</li>
+                        <li>Mengurangi peradangan dalam tubuh</li>
+                        <li>Mendukung kesehatan jantung</li>
+                        <li>Membantu fungsi otak yang sehat</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>659 kcal</td>
+                            <td>33%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>14.3 g</td>
+                            <td>29%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemak</td>
+                            <td>67.1 g</td>
+                            <td>103%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>11.7 g</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>7.5 g</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-shield-alt"></i> Selenium</td>
+                            <td>1917 μg</td>
+                            <td>3485%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Magnesium</td>
+                            <td>376 mg</td>
+                            <td>94%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="food-item">
+                <div class="food-image-container">
+                    <img src="https://images.unsplash.com/photo-1612504258838-fbf14fe4437d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGthY2FuZyUyMHRhbmFofGVufDB8fDB8fHww" alt="Kacang Tanah" class="food-image">
+                    <div class="food-name">Kacang Tanah</div>
+                </div>
+                
+                <p class="food-description">Meskipun secara teknis termasuk legume, kacang tanah biasanya dikonsumsi seperti kacang-kacangan. Kaya akan protein, lemak sehat, dan berbagai vitamin serta mineral. Kacang tanah juga mengandung resveratrol, antioksidan yang sama ditemukan dalam anggur merah.</p>
+                
+                <div class="health-benefits">
+                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                    <ul class="benefits-list">
+                        <li>Membantu penurunan berat badan dengan meningkatkan rasa kenyang</li>
+                        <li>Mendukung kesehatan jantung dengan lemak tak jenuh</li>
+                        <li>Mencegah batu empedu</li>
+                        <li>Mengandung antioksidan resveratrol</li>
+                        <li>Mengurangi risiko penyakit Alzheimer</li>
+                    </ul>
+                </div>
+                
+                <table class="nutrition-table">
+                    <thead>
+                        <tr>
+                            <th>Nutrisi</th>
+                            <th>Jumlah per 100g</th>
+                            <th>%AKG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-fire"></i> Kalori</td>
+                            <td>567 kcal</td>
+                            <td>28%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-dumbbell"></i> Protein</td>
+                            <td>25.8 g</td>
+                            <td>52%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-oil-can"></i> Lemat</td>
+                            <td>49.2 g</td>
+                            <td>76%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bread-slice"></i> Karbohidrat</td>
+                            <td>16.1 g</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ruler-combined"></i> Serat</td>
+                            <td>8.5 g</td>
+                            <td>34%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-bolt"></i> Niacin (B3)</td>
+                            <td>12.1 mg</td>
+                            <td>76%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-leaf"></i> Folat</td>
+                            <td>240 μg</td>
+                            <td>60%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>WEHEALTY</h3>
+                    <p>Platform kesehatan terpadu untuk membantu Anda mencapai hidup yang lebih sehat dan bahagia melalui panduan nutrisi, olahraga, dan perawatan diri.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="foods.html">Makanan</a></li>
+                        <li><a href="sports.html">Olahraga</a></li>
+                        <li><a href="skincare.html">Skincare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="index.html#services">Konsultasi</a></li>
+                        <li><a href="index.html#tools">Alat Kesehatan</a></li>
+                        <li><a href="index.html#about">Tentang Saya</a></li>
+                        <li><a href="index.html#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WEHEALTY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <div class="fab" id="print-fab" title="Cetak Panduan">
+            <i class="fas fa-print"></i>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="back-to-top" title="Kembali ke Atas">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Print functionality
+        document.getElementById('print-fab').addEventListener('click', function() {
+            window.print();
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.food-item');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementPosition < windowHeight - elementVisible) {
+                    element.style.animation = 'scaleIn 0.6s ease-out forwards';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        const animatedElements = document.querySelectorAll('.food-item');
+        animatedElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'scale(0.95)';
+        });
+
+        // Initialize scroll animations
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
