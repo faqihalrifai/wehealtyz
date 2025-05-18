@@ -280,6 +280,65 @@ nav a:hover::after {
     margin-bottom: 8px;
 }
 
+.health-card {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.health-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.health-card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.card-body h3 {
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.card-body p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.card-badge {
+    display: inline-block;
+    background: #f1c40f;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Warna khusus untuk setiap card */
+.food-card .card-icon { color: #e74c3c; }
+.food-card .card-badge { background: #e74c3c; }
+
+.sport-card .card-icon { color: #3498db; }
+.sport-card .card-badge { background: #3498db; }
+
+.skincare-card .card-icon { color: #9b59b6; }
+.skincare-card .card-badge { background: #9b59b6; }
 /* Health Tools Section */
 .health-tools {
     background-color: #f5f7fa;
