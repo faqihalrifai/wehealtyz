@@ -39,10 +39,10 @@
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         /* Header Styles */
@@ -120,6 +120,7 @@
         main {
             margin-top: 80px;
             padding: 40px 0;
+            width: 100%;
         }
 
         /* Hero Section */
@@ -129,12 +130,13 @@
             background-size: cover;
             background-position: center;
             color: var(--white);
-            padding: 100px 0;
+            padding: 120px 20px;
             text-align: center;
             margin-bottom: 50px;
-            border-radius: var(--radius);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            border-radius: var(--radius);
         }
 
         .hero::before {
@@ -167,101 +169,32 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* Product Category Section */
-        .product-category {
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
             margin-bottom: 60px;
+        }
+
+        .product-card {
             background: var(--white);
             border-radius: var(--radius);
-            padding: 40px;
+            overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid rgba(0, 180, 183, 0.2);
+            border: 1px solid rgba(0, 180, 183, 0.1);
         }
 
-        .product-category:hover {
+        .product-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 180, 183, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .product-category h3 {
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .product-category h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-
-        /* Product Item Styles */
-        .product-item {
-            margin-bottom: 50px;
-            padding: 30px;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--light-gray);
-        }
-
-        .product-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-        }
-
-        .product-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 180, 183, 0.2);
-        }
-
-        .product-item h4 {
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .product-item h4::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .product-item:hover h4::after {
-            width: 100%;
         }
 
         .product-image-container {
             position: relative;
-            margin-bottom: 20px;
-            border-radius: var(--radius);
+            height: 250px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            height: 350px;
         }
 
         .product-image {
@@ -271,181 +204,77 @@
             transition: var(--transition);
         }
 
-        .product-item:hover .product-image {
+        .product-card:hover .product-image {
             transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
         }
 
         .product-rating {
             color: var(--warning);
-            margin: 10px 0;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .product-rating i {
+            margin-right: 3px;
         }
 
         .product-price {
             font-weight: bold;
             color: var(--primary);
             font-size: 1.2rem;
-            margin: 10px 0;
+            margin-bottom: 15px;
         }
 
         .product-description {
             color: var(--gray);
             margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        /* Benefits Table */
-        .benefits-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .benefits-table th, .benefits-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .benefits-table th {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            font-weight: 500;
-        }
-
-        .benefits-table tr:nth-child(even) {
-            background-color: rgba(0, 180, 183, 0.05);
-        }
-
-        .benefits-table tr:hover {
-            background-color: rgba(0, 180, 183, 0.1);
-        }
-
-        /* Health Benefits */
-        .product-benefits {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(0, 180, 183, 0.05);
-            border-radius: var(--radius);
-            border-left: 4px solid var(--primary);
-        }
-
-        .product-benefits h5 {
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .product-benefits h5 i {
-            color: var(--secondary);
-        }
-
-        .benefits-list {
-            list-style-type: none;
-        }
-
-        .benefits-list li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        .benefits-list li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--success);
-        }
-
-        /* Ingredients Section */
-        .ingredients-section {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(255, 126, 95, 0.05);
-            border-radius: var(--radius);
-            border-left: 4px solid var(--secondary);
-        }
-
-        .ingredients-section h5 {
-            color: var(--secondary);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+        .product-meta {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--light-gray);
         }
 
-        .ingredients-list {
-            list-style-type: none;
-        }
-
-        .ingredients-list li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
-            line-height: 1.6;
-        }
-
-        .ingredients-list li::before {
-            content: '\f05d';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--warning);
-        }
-
-        /* How to Use Section */
-        .usage-section {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(40, 167, 69, 0.05);
-            border-radius: var(--radius);
-            border-left: 4px solid var(--success);
-        }
-
-        .usage-section h5 {
-            color: var(--success);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .usage-list {
-            list-style-type: none;
-        }
-
-        .usage-list li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
-            line-height: 1.6;
-        }
-
-        .usage-list li::before {
-            content: '\f7d9';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--primary);
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--gray);
+            background: var(--light-gray);
+            padding: 3px 10px;
+            border-radius: 20px;
         }
 
         /* Button Styles */
         .btn {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
             border: none;
@@ -455,8 +284,7 @@
             cursor: pointer;
             transition: var(--transition);
             box-shadow: 0 4px 10px rgba(0, 180, 183, 0.3);
-            margin-right: 10px;
-            margin-top: 15px;
+            font-size: 0.9rem;
         }
 
         .btn:hover {
@@ -477,34 +305,50 @@
             color: var(--white);
         }
 
-        /* Ingredients Guide Section */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        /* Ingredients Guide */
         .ingredients-guide {
             margin: 60px 0;
             background: var(--white);
             border-radius: var(--radius);
             padding: 40px;
             box-shadow: var(--shadow);
-        }
-
-        .ingredients-guide h3 {
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .ingredients-guide h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
+            width: 100%;
         }
 
         .ingredients-grid {
@@ -558,34 +402,14 @@
             font-size: 1.1rem;
         }
 
-        /* Skincare Routine Section */
+        /* Skincare Routine */
         .routine-section {
             margin: 60px 0;
             background: var(--white);
             border-radius: var(--radius);
             padding: 40px;
             box-shadow: var(--shadow);
-        }
-
-        .routine-section h3 {
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .routine-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
+            width: 100%;
         }
 
         .routine-tabs {
@@ -662,6 +486,7 @@
             background-color: var(--primary-dark);
             color: var(--white);
             padding: 40px 0 20px;
+            width: 100%;
         }
 
         .footer-grid {
@@ -746,24 +571,72 @@
             font-size: 14px;
         }
 
+        /* Floating Action Buttons */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 992px) {
-            .product-category {
-                padding: 30px;
-            }
-            
-            .product-item {
-                padding: 25px;
-            }
-            
             .product-image-container {
-                height: 300px;
+                height: 220px;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
 
@@ -792,6 +665,10 @@
                 display: block;
             }
             
+            .hero {
+                padding: 100px 20px;
+            }
+            
             .hero h2 {
                 font-size: 2rem;
             }
@@ -800,680 +677,230 @@
                 font-size: 1rem;
             }
             
-            .product-category {
-                padding: 25px;
+            .routine-tabs {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .product-item {
-                padding: 20px;
-            }
-            
-            .product-image-container {
-                height: 250px;
+            .routine-step {
+                flex-direction: column;
+                gap: 15px;
             }
         }
 
         @media (max-width: 576px) {
             .hero {
-                padding: 80px 0;
+                padding: 80px 20px;
             }
             
             .hero h2 {
                 font-size: 1.8rem;
             }
             
-            .product-category {
-                padding: 20px;
+            .product-grid {
+                grid-template-columns: 1fr;
             }
             
-            .product-item {
-                padding: 15px;
-            }
-            
-            .benefits-table th, 
-            .benefits-table td {
-                padding: 8px 10px;
+            .btn {
+                padding: 8px 15px;
                 font-size: 14px;
             }
             
-            .product-image-container {
-                height: 200px;
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>WEHEALTY</h1>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="foods.html">Makanan</a></li>
+                    <li><a href="sports.html">Olahraga</a></li>
+                    <li><a href="skincare.html">Skincare</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
     <main class="container">
         <section class="hero">
             <div class="hero-content">
                 <h2>Perawatan Kulit Sehat untuk Semua Jenis Kulit</h2>
                 <p>Temukan produk skincare terbaik dengan bahan-bahan alami dan efektif untuk merawat kulit Anda setiap hari. Mulailah perjalanan menuju kulit sehat dan bercahaya.</p>
-                <a href="#products" class="btn">Lihat Produk</a>
-                <a href="#routine" class="btn btn-outline">Rutinitas Skincare</a>
+                <div class="btn-group">
+                    <a href="#products" class="btn">Lihat Produk</a>
+                    <a href="#routine" class="btn btn-outline">Rutinitas Skincare</a>
+                </div>
             </div>
         </section>
 
-        <section id="products" class="product-category">
-            <h3><i class="fas fa-pump-soap"></i> Pembersih Wajah</h3>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1656147961287-3f91d30e086e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Gentle Foaming Cleanser" class="product-image">
-                </div>
-                
-                <h4>Gentle Foaming Cleanser</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.5 (320 reviews)
-                </div>
-                <div class="product-price">Rp 120.000</div>
-                <p class="product-description">Pembersih wajah berbusa lembut yang efektif membersihkan tanpa membuat kulit kering. Mengandung ekstrak chamomile dan aloe vera yang menenangkan kulit serta menjaga pH alami kulit.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Membersihkan kotoran, minyak berlebih, dan sisa makeup dengan lembut</li>
-                        <li>Menjaga kelembapan alami kulit tanpa menyebabkan kekeringan</li>
-                        <li>Formula pH-balanced (5.5) yang sesuai dengan pH alami kulit</li>
-                        <li>Bebas sulfat, alkohol, dan paraben yang dapat mengiritasi</li>
-                        <li>Cocok untuk semua jenis kulit, termasuk kulit sensitif</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Aloe Vera Extract</td>
-                            <td>Melembapkan dan menenangkan kulit</td>
-                            <td>5%</td>
-                        </tr>
-                        <tr>
-                            <td>Chamomile Extract</td>
-                            <td>Mengurangi kemerahan dan iritasi</td>
-                            <td>3%</td>
-                        </tr>
-                        <tr>
-                            <td>Niacinamide</td>
-                            <td>Memperkuat skin barrier</td>
-                            <td>2%</td>
-                        </tr>
-                        <tr>
-                            <td>Hyaluronic Acid</td>
-                            <td>Memberikan hidrasi instan</td>
-                            <td>1%</td>
-                        </tr>
-                        <tr>
-                            <td>Tea Tree Oil</td>
-                            <td>Antibakteri alami untuk jerawat</td>
-                            <td>0.5%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Aqua, Sodium Cocoyl Isethionate, Cocamidopropyl Betaine, Glycerin</li>
-                        <li>Aloe Barbadensis Leaf Juice, Chamomilla Recutita Flower Extract</li>
-                        <li>Niacinamide, Sodium Hyaluronate, Melaleuca Alternifolia Leaf Oil</li>
-                        <li>Panthenol, Allantoin, Citric Acid, Sodium Benzoate, Potassium Sorbate</li>
-                    </ul>
-                </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Basahi wajah dengan air hangat untuk membuka pori-pori</li>
-                        <li>Ambil 1-2 pump cleanser dan busakan di telapak tangan</li>
-                        <li>Pijat lembut ke wajah dengan gerakan melingkar selama 30-60 detik</li>
-                        <li>Hindari area mata yang sensitif</li>
-                        <li>Bilas hingga bersih dengan air hangat atau dingin</li>
-                        <li>Gunakan 2 kali sehari (pagi dan malam) untuk hasil optimal</li>
-                    </ul>
-                </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
+        <section id="products">
+            <div class="section-title">
+                <h2>Produk Skincare Terbaik</h2>
+                <p>Temukan rangkaian produk skincare berkualitas tinggi untuk semua jenis kulit</p>
             </div>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1547965010-3189f704431b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Green Tea Cleansing Oil" class="product-image">
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1656147961287-3f91d30e086e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Gentle Foaming Cleanser" class="product-image">
+                        <span class="product-badge">Pembersih</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Gentle Foaming Cleanser</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.5 (320)
+                        </div>
+                        <div class="product-price">Rp 120.000</div>
+                        <p class="product-description">Pembersih wajah berbusa lembut yang efektif membersihkan tanpa membuat kulit kering. Mengandung ekstrak chamomile dan aloe vera.</p>
+                        <div class="product-meta">
+                            <span class="product-category">Pembersih Wajah</span>
+                            <div class="btn-group">
+                                <a href="#" class="btn">Beli</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <h4>Green Tea Cleansing Oil</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.8 (245 reviews)
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1547965010-3189f704431b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Green Tea Cleansing Oil" class="product-image">
+                        <span class="product-badge">Double Cleansing</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Green Tea Cleansing Oil</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.8 (245)
+                        </div>
+                        <div class="product-price">Rp 150.000</div>
+                        <p class="product-description">Cleansing oil dengan ekstrak green tea yang efektif membersihkan makeup dan sunscreen tanpa menyumbat pori.</p>
+                        <div class="product-meta">
+                            <span class="product-category">Pembersih Wajah</span>
+                            <div class="btn-group">
+                                <a href="#" class="btn">Beli</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-price">Rp 150.000</div>
-                <p class="product-description">Cleansing oil dengan ekstrak green tea yang efektif membersihkan makeup dan sunscreen tanpa menyumbat pori. Tekstur ringan yang berubah menjadi susu saat terkena air, cocok untuk double cleansing.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Membersihkan makeup waterproof dan sunscreen secara menyeluruh</li>
-                        <li>Mengangkat kotoran, sebum, dan polusi yang menempel di kulit</li>
-                        <li>Mengandung antioksidan tinggi untuk melawan radikal bebas</li>
-                        <li>Tekstur ringan dan tidak meninggalkan rasa berminyak</li>
-                        <li>Formula non-comedogenic yang tidak menyumbat pori</li>
-                    </ul>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1743926959711-73960c2a7b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Hydra Boost Moisturizer" class="product-image">
+                        <span class="product-badge">Pelembap</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Hydra Boost Moisturizer</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9 (512)
+                        </div>
+                        <div class="product-price">Rp 180.000</div>
+                        <p class="product-description">Pelembap wajah ringan dengan 3 jenis hyaluronic acid yang memberikan hidrasi intens dan tahan lama.</p>
+                        <div class="product-meta">
+                            <span class="product-category">Pelembap Wajah</span>
+                            <div class="btn-group">
+                                <a href="#" class="btn">Beli</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Green Tea Extract</td>
-                            <td>Antioksidan dan anti-inflamasi</td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td>Jojoba Oil</td>
-                            <td>Menyeimbangkan produksi minyak</td>
-                            <td>15%</td>
-                        </tr>
-                        <tr>
-                            <td>Vitamin E</td>
-                            <td>Melembapkan dan melindungi kulit</td>
-                            <td>5%</td>
-                        </tr>
-                        <tr>
-                            <td>Squalane</td>
-                            <td>Melembapkan tanpa rasa berminyak</td>
-                            <td>8%</td>
-                        </tr>
-                        <tr>
-                            <td>Rosehip Oil</td>
-                            <td>Mencerahkan dan regenerasi kulit</td>
-                            <td>3%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Caprylic/Capric Triglyceride, Ethylhexyl Palmitate, Squalane</li>
-                        <li>Simmondsia Chinensis Seed Oil, Camellia Sinensis Leaf Extract</li>
-                        <li>Tocopheryl Acetate, Rosa Canina Fruit Oil, Orbignya Oleifera Seed Oil</li>
-                        <li>Polysorbate 80, Phenoxyethanol, Ethylhexylglycerin, Fragrance</li>
-                    </ul>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://media.istockphoto.com/id/1490584088/photo/gotu-kola-extract.webp?b=1&s=612x612&w=0&k=20&c=GnYn14xOx8vC1dfmKXUF9DSBvSD7HjRqH3GCAFDfL0c=" alt="Cica Repair Cream" class="product-image">
+                        <span class="product-badge">Perawatan</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cica Repair Cream</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.7 (389)
+                        </div>
+                        <div class="product-price">Rp 200.000</div>
+                        <p class="product-description">Krim perawatan dengan centella asiatica untuk kulit sensitif dan iritasi. Membantu memperbaiki kulit yang rusak.</p>
+                        <div class="product-meta">
+                            <span class="product-category">Pelembap Wajah</span>
+                            <div class="btn-group">
+                                <a href="#" class="btn">Beli</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Gunakan pada wajah kering dengan tangan kering</li>
-                        <li>Ambil 2-3 pump dan pijat lembut ke seluruh wajah termasuk area mata</li>
-                        <li>Biarkan selama 30 detik untuk melarutkan makeup dan kotoran</li>
-                        <li>Basahi tangan sedikit dan pijat kembali hingga oil berubah menjadi susu</li>
-                        <li>Bilas hingga bersih dengan air hangat</li>
-                        <li>Lanjutkan dengan water-based cleanser untuk double cleansing</li>
-                    </ul>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://media.istockphoto.com/id/2170136988/id/foto/botol-serum-retinol-dan-jeruk-dalam-air.jpg?s=612x612&w=0&k=20&c=9ESLsR-AmDy0zbrOlQYjQB6xr2vCOT8Crl8JJD2jDqg=" alt="Vitamin C Serum" class="product-image">
+                        <span class="product-badge">Serum</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Vitamin C Brightening Serum</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.6 (421)
+                        </div>
+                        <div class="product-price">Rp 250.000</div>
+                        <p class="product-description">Serum vitamin C 15% dengan formulasi stabil yang mencerahkan kulit, mengurangi hiperpigmentasi.</p>
+                        <div class="product-meta">
+                            <span class="product-category">Serum Perawatan</span>
+                            <div class="btn-group">
+                                <a href="#" class="btn">Beli</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
-            </div>
-        </section>
-        
-        <section class="product-category">
-            <h3><i class="fas fa-cloud"></i> Pelembap Wajah</h3>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1743926959711-73960c2a7b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Hydra Boost Moisturizer" class="product-image">
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://media.istockphoto.com/id/1270699634/photo/open-capsule-with-zinc-from-which-the-vitamin-composition-is-pouring.webp?b=1&s=612x612&w=0&k=20&c=tIV52olm6VfYRAFvShqfL0HuWuA8aySB6LXaZCRQ-B0=" alt="Niacinamide Serum" class="product-image">
+                        <span class="product-badge">Serum</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Niacinamide 10% + Zinc</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.8 (678)
+                        </div>
+                        <div class="product-price">Rp 175.000</div>
+                        <p class="product-description">Serum niacinamide 10% dengan zinc untuk mengontrol produksi minyak, memperbaiki tekstur kulit.</p>
+                        <div class="product-meta">
+                            <span class="product-category">Serum Perawatan</span>
+                            <div class="btn-group">
+                                <a href="#" class="btn">Beli</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <h4>Hydra Boost Moisturizer</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9 (512 reviews)
-                </div>
-                <div class="product-price">Rp 180.000</div>
-                <p class="product-description">Pelembap wajah ringan dengan 3 jenis hyaluronic acid yang memberikan hidrasi intens dan tahan lama. Tekstur gel-cream yang cepat menyerap tanpa meninggalkan rasa lengket, cocok untuk kulit kering dan dehidrasi.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Mengikat kelembapan hingga 24 jam dengan teknologi multi-molekul HA</li>
-                        <li>Tekstur gel-cream yang cepat menyerap dan tidak berminyak</li>
-                        <li>Memperbaiki skin barrier dengan ceramide dan fatty acids</li>
-                        <li>Non-comedogenic dan bebas minyak (oil-free)</li>
-                        <li>Cocok digunakan di bawah makeup sebagai base yang menahan kelembapan</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Hyaluronic Acid</td>
-                            <td>Mengikat kelembapan 1000x beratnya</td>
-                            <td>1.5%</td>
-                        </tr>
-                        <tr>
-                            <td>Sodium Hyaluronate</td>
-                            <td>Penetrasi lebih dalam ke kulit</td>
-                            <td>1%</td>
-                        </tr>
-                        <tr>
-                            <td>Hydrolyzed Hyaluronic Acid</td>
-                            <td>Penghidrasi permukaan kulit</td>
-                            <td>0.5%</td>
-                        </tr>
-                        <tr>
-                            <td>Ceramide NP</td>
-                            <td>Memperkuat skin barrier</td>
-                            <td>2%</td>
-                        </tr>
-                        <tr>
-                            <td>Squalane</td>
-                            <td>Melembapkan tanpa rasa berminyak</td>
-                            <td>5%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Aqua, Glycerin, Propanediol, Pentylene Glycol, Ammonium Acryloyldimethyltaurate/VP Copolymer</li>
-                        <li>Sodium Hyaluronate, Hydrolyzed Hyaluronic Acid, Ceramide NP</li>
-                        <li>Squalane, Betaine, Panthenol, Allantoin, Tocopherol</li>
-                        <li>Ethylhexylglycerin, Phenoxyethanol, Carbomer, Sodium Hydroxide</li>
-                    </ul>
-                </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Gunakan setelah serum atau perawatan aktif lainnya</li>
-                        <li>Ambil seujung jari dan aplikasikan ke wajah dan leher yang masih lembap</li>
-                        <li>Tekan-tekan lembut dengan ujung jari hingga meresap sempurna</li>
-                        <li>Dapat digunakan pagi dan malam hari</li>
-                        <li>Untuk kulit sangat kering, bisa dilapis setelah serum HA</li>
-                        <li>Tunggu 2-3 menit sebelum aplikasi sunscreen atau makeup</li>
-                    </ul>
-                </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
-            </div>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://media.istockphoto.com/id/1490584088/photo/gotu-kola-extract.webp?b=1&s=612x612&w=0&k=20&c=GnYn14xOx8vC1dfmKXUF9DSBvSD7HjRqH3GCAFDfL0c=" alt="Cica Repair Cream" class="product-image">
-                </div>
-                
-                <h4>Cica Repair Cream</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.7 (389 reviews)
-                </div>
-                <div class="product-price">Rp 200.000</div>
-                <p class="product-description">Krim perawatan dengan centella asiatica untuk kulit sensitif dan iritasi. Membantu memperbaiki kulit yang rusak, mengurangi kemerahan, dan memberikan hidrasi intensif dengan tekstur krim yang nyaman.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Menenangkan kulit sensitif dan mengurangi kemerahan</li>
-                        <li>Mempercepat regenerasi kulit yang rusak atau teriritasi</li>
-                        <li>Mengurangi tanda peradangan dan iritasi kulit</li>
-                        <li>Pelembap intensif dengan tekstur yang nyaman</li>
-                        <li>Cocok untuk kulit yang mengalami rosacea, eczema, atau setelah prosedur skincare</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Centella Asiatica Extract</td>
-                            <td>Anti-inflamasi dan penyembuhan</td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td>Madecassoside</td>
-                            <td>Memperbaiki skin barrier</td>
-                            <td>2%</td>
-                        </tr>
-                        <tr>
-                            <td>Panthenol</td>
-                            <td>Melembapkan dan menenangkan</td>
-                            <td>5%</td>
-                        </tr>
-                        <tr>
-                            <td>Ceramide Complex</td>
-                            <td>Memperkuat pertahanan kulit</td>
-                            <td>3%</td>
-                        </tr>
-                        <tr>
-                            <td>Shea Butter</td>
-                            <td>Nutrisi dan proteksi kulit</td>
-                            <td>5%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Aqua, Glycerin, Butyrospermum Parkii Butter, Cetearyl Alcohol</li>
-                        <li>Centella Asiatica Extract, Madecassoside, Panthenol</li>
-                        <li>Ceramide NP, Cholesterol, Sodium Hyaluronate, Allantoin</li>
-                        <li>Xanthan Gum, Ethylhexylglycerin, Phenoxyethanol</li>
-                    </ul>
-                </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Gunakan sebagai langkah terakhir rutin skincare malam hari</li>
-                        <li>Ambil sedikit produk (seukuran kacang polong) dan panaskan di antara jari</li>
-                        <li>Tekan-tekan lembut ke seluruh wajah, fokus pada area yang iritasi</li>
-                        <li>Dapat digunakan sebagai spot treatment untuk area yang sangat kering/iritasi</li>
-                        <li>Untuk kulit sangat sensitif, tes dulu di area kecil sebelum penggunaan penuh</li>
-                        <li>Simpan di tempat sejuk untuk menjaga stabilitas bahan aktif</li>
-                    </ul>
-                </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
-            </div>
-        </section>
-        
-        <section class="product-category">
-            <h3><i class="fas fa-flask"></i> Serum Perawatan</h3>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://media.istockphoto.com/id/2170136988/id/foto/botol-serum-retinol-dan-jeruk-dalam-air.jpg?s=612x612&w=0&k=20&c=9ESLsR-AmDy0zbrOlQYjQB6xr2vCOT8Crl8JJD2jDqg=" alt="Vitamin C Serum" class="product-image">
-                </div>
-                
-                <h4>Vitamin C Brightening Serum</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.6 (421 reviews)
-                </div>
-                <div class="product-price">Rp 250.000</div>
-                <p class="product-description">Serum vitamin C 15% dengan formulasi stabil yang mencerahkan kulit, mengurangi hiperpigmentasi, dan melindungi dari radikal bebas. Mengandung vitamin E dan ferulic acid untuk meningkatkan stabilitas dan efektivitas vitamin C.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Mencerahkan kulit secara merata dan mengurangi noda hitam</li>
-                        <li>Mengurangi tanda penuaan dengan merangsang produksi kolagen</li>
-                        <li>Melindungi dari polusi dan radikal bebas penyebab penuaan</li>
-                        <li>Formulasi stabil dengan pH optimal (3.2) untuk penyerapan maksimal</li>
-                        <li>Tekstur ringan yang cepat menyerap tanpa meninggalkan residu lengket</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>L-Ascorbic Acid</td>
-                            <td>Antioksidan dan mencerahkan</td>
-                            <td>15%</td>
-                        </tr>
-                        <tr>
-                            <td>Vitamin E (Tocopherol)</td>
-                            <td>Meningkatkan stabilitas vitamin C</td>
-                            <td>1%</td>
-                        </tr>
-                        <tr>
-                            <td>Ferulic Acid</td>
-                            <td>Meningkatkan efektivitas vitamin C</td>
-                            <td>0.5%</td>
-                        </tr>
-                        <tr>
-                            <td>Hyaluronic Acid</td>
-                            <td>Memberikan hidrasi tambahan</td>
-                            <td>2%</td>
-                        </tr>
-                        <tr>
-                            <td>Niacinamide</td>
-                            <td>Mencerahkan dan menenangkan</td>
-                            <td>5%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Aqua, Ascorbic Acid, Propanediol, Glycerin</li>
-                        <li>Tocopherol, Ferulic Acid, Sodium Hyaluronate, Niacinamide</li>
-                        <li>Panthenol, Allantoin, Xanthan Gum, Ethylhexylglycerin</li>
-                        <li>Phenoxyethanol, Sodium Hydroxide</li>
-                    </ul>
-                </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Gunakan di pagi hari setelah cleanser dan sebelum pelembap</li>
-                        <li>Ambil 4-5 tetes serum dan aplikasikan ke wajah dan leher yang bersih dan kering</li>
-                        <li>Tunggu 1-2 menit hingga serum sepenuhnya menyerap</li>
-                        <li>Selalu gunakan sunscreen setelahnya karena vitamin C meningkatkan sensitivitas matahari</li>
-                        <li>Simpan di tempat sejuk dan gelap untuk menjaga stabilitas</li>
-                        <li>Warna kuning pucat normal, jika berubah menjadi cokelat tua artinya sudah teroksidasi</li>
-                    </ul>
-                </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
-            </div>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://media.istockphoto.com/id/1270699634/photo/open-capsule-with-zinc-from-which-the-vitamin-composition-is-pouring.webp?b=1&s=612x612&w=0&k=20&c=tIV52olm6VfYRAFvShqfL0HuWuA8aySB6LXaZCRQ-B0=" alt="Niacinamide Serum" class="product-image">
-                </div>
-                
-                <h4>Niacinamide 10% + Zinc</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.8 (678 reviews)
-                </div>
-                <div class="product-price">Rp 175.000</div>
-                <p class="product-description">Serum niacinamide 10% dengan zinc untuk mengontrol produksi minyak, memperbaiki tekstur kulit, dan mengurangi kemerahan. Formula ringan yang cocok untuk kulit berminyak, berjerawat, dan sensitif.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Mengontrol produksi minyak berlebih dan mengurangi kilap wajah</li>
-                        <li>Memperkecil pori-pori yang terlihat besar</li>
-                        <li>Mengurangi kemerahan dan iritasi pada kulit sensitif</li>
-                        <li>Memperbaiki skin barrier dan meningkatkan retensi kelembapan</li>
-                        <li>Mencerahkan kulit dan mengurangi hiperpigmentasi</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Niacinamide</td>
-                            <td>Mengontrol minyak dan mencerahkan</td>
-                            <td>10%</td>
-                        </tr>
-                        <tr>
-                            <td>Zinc PCA</td>
-                            <td>Mengurangi inflamasi dan minyak</td>
-                            <td>1%</td>
-                        </tr>
-                        <tr>
-                            <td>Panthenol</td>
-                            <td>Melembapkan dan menenangkan</td>
-                            <td>2%</td>
-                        </tr>
-                        <tr>
-                            <td>Hyaluronic Acid</td>
-                            <td>Memberikan hidrasi tanpa minyak</td>
-                            <td>1%</td>
-                        </tr>
-                        <tr>
-                            <td>Green Tea Extract</td>
-                            <td>Antioksidan dan anti-inflamasi</td>
-                            <td>2%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Aqua, Niacinamide, Propanediol, Glycerin</li>
-                        <li>Zinc PCA, Panthenol, Sodium Hyaluronate</li>
-                        <li>Camellia Sinensis Leaf Extract, Allantoin</li>
-                        <li>Xanthan Gum, Ethylhexylglycerin, Phenoxyethanol</li>
-                    </ul>
-                </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Gunakan pagi dan/atau malam hari setelah cleanser</li>
-                        <li>Ambil 2-3 tetes serum dan aplikasikan ke wajah yang bersih</li>
-                        <li>Hindari penggunaan bersamaan dengan vitamin C (gunakan di waktu berbeda)</li>
-                        <li>Dapat digunakan sebelum atau setelah serum lainnya (yang lebih ringan dulu)</li>
-                        <li>Untuk kulit sangat sensitif, mulai dengan penggunaan 2-3x seminggu</li>
-                        <li>Selalu gunakan sunscreen di pagi hari untuk melindungi kulit</li>
-                    </ul>
-                </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
-            </div>
-        </section>
-        
-        <section class="product-category">
-            <h3><i class="fas fa-sun"></i> Tabir Surya</h3>
-            
-            <div class="product-item">
-                <div class="product-image-container">
-                    <img src="https://media.istockphoto.com/id/1415304701/id/foto/wanita-cantik-asia-tersenyum-memegang-krim-matahari-dengan-uv-pelindung-matahari-atau-tabir.jpg?s=612x612&w=0&k=20&c=_hkaah1Bqbh82C9bCuUNN77KRWvK9qjnzTvgapBCN8A=" alt="Daily UV Defense" class="product-image">
-                </div>
-                
-                <h4>Daily UV Defense SPF 50+ PA++++</h4>
-                <div class="product-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9 (723 reviews)
-                </div>
-                <div class="product-price">Rp 220.000</div>
-                <p class="product-description">Tabir surya broad spectrum SPF 50+ PA++++ dengan tekstur ringan yang tidak meninggalkan white cast. Perlindungan optimal dari UVA/UVB dengan formula yang nyaman digunakan sehari-hari.</p>
-                
-                <div class="product-benefits">
-                    <h5><i class="fas fa-heart"></i> Manfaat Utama</h5>
-                    <ul class="benefits-list">
-                        <li>Perlindungan tinggi SPF 50+ PA++++ terhadap UVA/UVB</li>
-                        <li>Tekstur ringan dan cepat menyerap tanpa meninggalkan white cast</li>
-                        <li>Tahan air hingga 80 menit, ideal untuk aktivitas sehari-hari</li>
-                        <li>Mengandung antioksidan tambahan untuk melawan radikal bebas</li>
-                        <li>Cocok untuk semua jenis kulit, termasuk sensitif dan berjerawat</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Bahan Aktif</th>
-                            <th>Manfaat</th>
-                            <th>Konsentrasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Uvinul A Plus</td>
-                            <td>Proteksi UVA tinggi</td>
-                            <td>2%</td>
-                        </tr>
-                        <tr>
-                            <td>Uvinul T 150</td>
-                            <td>Proteksi UVB stabil</td>
-                            <td>3%</td>
-                        </tr>
-                        <tr>
-                            <td>Tinosorb S</td>
-                            <td>Proteksi broad spectrum</td>
-                            <td>3%</td>
-                        </tr>
-                        <tr>
-                            <td>Vitamin E</td>
-                            <td>Antioksidan tambahan</td>
-                            <td>1%</td>
-                        </tr>
-                        <tr>
-                            <td>Niacinamide</td>
-                            <td>Menenangkan dan mencerahkan</td>
-                            <td>2%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="ingredients-section">
-                    <h5><i class="fas fa-flask"></i> Daftar Bahan Lengkap</h5>
-                    <ul class="ingredients-list">
-                        <li>Aqua, Ethylhexyl Methoxycinnamate, Butyl Methoxydibenzoylmethane</li>
-                        <li>Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine, Diethylamino Hydroxybenzoyl Hexyl Benzoate</li>
-                        <li>Niacinamide, Tocopheryl Acetate, Glycerin, Sodium Hyaluronate</li>
-                        <li>Aloe Barbadensis Leaf Juice, Allantoin, Xanthan Gum</li>
-                    </ul>
-                </div>
-                
-                <div class="usage-section">
-                    <h5><i class="fas fa-book-open"></i> Cara Penggunaan</h5>
-                    <ul class="usage-list">
-                        <li>Gunakan sebagai langkah terakhir rutin skincare pagi</li>
-                        <li>Ambil 1/4 sendok teh (1.25ml) untuk wajah dan leher</li>
-                        <li>Aplikasikan 15-30 menit sebelum terpapar sinar matahari</li>
-                        <li>Reapply setiap 2 jam jika berada di luar ruangan</li>
-                        <li>Reapply setelah berenang, berkeringat, atau mengelap wajah</li>
-                        <li>Untuk aktivitas outdoor intens, gunakan bersama tabir surya fisik</li>
-                    </ul>
-                </div>
-                
-                <a href="#" class="btn">Beli Sekarang</a>
-                <a href="#" class="btn btn-outline">Tambah ke Wishlist</a>
-            </div>
         </section>
         
         <section id="ingredients" class="ingredients-guide">
-            <h3><i class="fas fa-atom"></i> Panduan Bahan Skincare</h3>
+            <div class="section-title">
+                <h2><i class="fas fa-atom"></i> Panduan Bahan Skincare</h2>
+                <p>Kenali bahan-bahan aktif dalam produk skincare dan manfaatnya untuk kulit Anda</p>
+            </div>
             
             <div class="ingredients-grid">
                 <div class="ingredient-card">
@@ -1488,15 +915,6 @@
                             <li>Mencerahkan kulit dan mengurangi noda hitam</li>
                             <li>Merangsang produksi kolagen untuk kulit kencang</li>
                             <li>Melindungi dari kerusakan akibat polusi dan UV</li>
-                            <li>Mengurangi garis halus dan kerutan</li>
-                        </ul>
-                    </div>
-                    <div class="ingredient-benefits">
-                        <h5>Produk yang Mengandung:</h5>
-                        <ul class="benefits-list">
-                            <li>Vitamin C Brightening Serum</li>
-                            <li>Brightening Day Cream</li>
-                            <li>Antioxidant Facial Mist</li>
                         </ul>
                     </div>
                 </div>
@@ -1513,15 +931,6 @@
                             <li>Mengontrol produksi minyak berlebih</li>
                             <li>Memperkecil pori-pori yang terlihat besar</li>
                             <li>Mengurangi kemerahan dan iritasi</li>
-                            <li>Mencerahkan kulit secara merata</li>
-                        </ul>
-                    </div>
-                    <div class="ingredient-benefits">
-                        <h5>Produk yang Mengandung:</h5>
-                        <ul class="benefits-list">
-                            <li>Niacinamide 10% Serum</li>
-                            <li>Oil-Control Moisturizer</li>
-                            <li>Pore Refining Toner</li>
                         </ul>
                     </div>
                 </div>
@@ -1538,90 +947,6 @@
                             <li>Memberikan hidrasi instan ke semua lapisan kulit</li>
                             <li>Mengurangi tampilan garis halus dan kerutan</li>
                             <li>Meningkatkan elastisitas dan kekenyalan kulit</li>
-                            <li>Cocok untuk semua jenis kulit termasuk sensitif</li>
-                        </ul>
-                    </div>
-                    <div class="ingredient-benefits">
-                        <h5>Produk yang Mengandung:</h5>
-                        <ul class="benefits-list">
-                            <li>Hydra Boost Moisturizer</li>
-                            <li>Deep Hydration Serum</li>
-                            <li>Water Sleeping Mask</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h4>Centella Asiatica</h4>
-                    <p>Tanaman herbal dengan sifat penyembuhan yang kuat. Menenangkan kulit sensitif, mengurangi kemerahan, dan mempercepat regenerasi kulit.</p>
-                    <div class="ingredient-benefits">
-                        <h5>Manfaat Utama:</h5>
-                        <ul class="benefits-list">
-                            <li>Menenangkan kulit sensitif dan iritasi</li>
-                            <li>Mempercepat penyembuhan luka dan jerawat</li>
-                            <li>Mengurangi kemerahan dan inflamasi</li>
-                            <li>Meningkatkan produksi kolagen</li>
-                        </ul>
-                    </div>
-                    <div class="ingredient-benefits">
-                        <h5>Produk yang Mengandung:</h5>
-                        <ul class="benefits-list">
-                            <li>Cica Repair Cream</li>
-                            <li>Soothing Facial Toner</li>
-                            <li>Calming Sheet Mask</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h4>Retinol</h4>
-                    <p>Turunan vitamin A yang merangsang pergantian sel kulit, meningkatkan produksi kolagen, dan mengurangi tanda penuaan. Penggunaan malam hari.</p>
-                    <div class="ingredient-benefits">
-                        <h5>Manfaat Utama:</h5>
-                        <ul class="benefits-list">
-                            <li>Mengurangi garis halus dan kerutan</li>
-                            <li>Memperbaiki tekstur dan warna kulit</li>
-                            <li>Mengurangi jerawat dan pori-pori tersumbat</li>
-                            <li>Merangsang produksi kolagen dan elastin</li>
-                        </ul>
-                    </div>
-                    <div class="ingredient-benefits">
-                        <h5>Produk yang Mengandung:</h5>
-                        <ul class="benefits-list">
-                            <li>Retinol Night Serum</li>
-                            <li>Anti-Aging Night Cream</li>
-                            <li>Renewal Eye Treatment</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h4>AHA/BHA</h4>
-                    <p>Asam eksfoliasi yang mengangkat sel kulit mati, membersihkan pori, dan meratakan tekstur kulit. AHA untuk permukaan kulit, BHA untuk dalam pori.</p>
-                    <div class="ingredient-benefits">
-                        <h5>Manfaat Utama:</h5>
-                        <ul class="benefits-list">
-                            <li>Mengangkat sel kulit mati dan mencerahkan</li>
-                            <li>Membersihkan pori-pori dan mencegah jerawat</li>
-                            <li>Meratakan tekstur dan warna kulit</li>
-                            <li>Meningkatkan penyerapan produk skincare lainnya</li>
-                        </ul>
-                    </div>
-                    <div class="ingredient-benefits">
-                        <h5>Produk yang Mengandung:</h5>
-                        <ul class="benefits-list">
-                            <li>Weekly Exfoliating Toner</li>
-                            <li>Pore Refining Treatment</li>
-                            <li>Resurfacing Serum</li>
                         </ul>
                     </div>
                 </div>
@@ -1629,7 +954,10 @@
         </section>
         
         <section id="routine" class="routine-section">
-            <h3><i class="fas fa-calendar-alt"></i> Rutinitas Skincare Harian</h3>
+            <div class="section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Rutinitas Skincare Harian</h2>
+                <p>Panduan lengkap untuk merawat kulit Anda setiap hari</p>
+            </div>
             
             <div class="routine-tabs">
                 <div class="routine-tab active" data-tab="morning">Pagi Hari</div>
@@ -1711,14 +1039,6 @@
                         <p>Gunakan pelembap yang lebih kaya di malam hari untuk membantu perbaikan kulit saat tidur. Cari yang mengandung ceramide, peptide, atau bahan reparatif lainnya.</p>
                     </div>
                 </div>
-                
-                <div class="routine-step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h4>Perawatan Mata (Opsional)</h4>
-                        <p>Gunakan eye cream khusus untuk area mata yang lebih tipis dan rentan kerutan. Pilih formula dengan kafein untuk mata bengkak atau peptide untuk kerutan.</p>
-                    </div>
-                </div>
             </div>
             
             <div id="weekly" class="routine-content">
@@ -1743,14 +1063,6 @@
                     <div class="step-content">
                         <h4>Masker Lumpur/Clay (Untuk Kulit Berminyak)</h4>
                         <p>Gunakan masker clay 1x seminggu untuk menyerap minyak berlebih dan membersihkan pori. Jangan biarkan terlalu lama hingga kering keras.</p>
-                    </div>
-                </div>
-                
-                <div class="routine-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h4>Perawatan DIY (Opsional)</h4>
-                        <p>Lakukan perawatan tambahan seperti facial massage, gua sha, atau ice rolling untuk meningkatkan sirkulasi dan mengurangi bengkak.</p>
                     </div>
                 </div>
             </div>
@@ -1804,13 +1116,6 @@
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
-    <div class="fab-container">
-        <div class="fab" id="print-fab" title="Cetak Panduan">
-            <i class="fas fa-print"></i>
-        </div>
-    </div>
-
     <a href="#" class="back-to-top" id="back-to-top" title="Kembali ke Atas">
         <i class="fas fa-arrow-up"></i>
     </a>
@@ -1819,7 +1124,7 @@
         // Mobile menu toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             const nav = document.querySelector('nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            nav.classList.toggle('active');
         });
 
         // Back to top button
@@ -1832,36 +1137,31 @@
             }
         });
 
-        // Print functionality
-        document.getElementById('print-fab').addEventListener('click', function() {
-            window.print();
+        // Routine tabs functionality
+        const tabs = document.querySelectorAll('.routine-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.routine-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
         });
 
-        // Animate elements on scroll
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.sport-item');
-            const windowHeight = window.innerHeight;
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-               if (elementPosition < windowHeight - elementVisible) {
-                    element.style.animation = 'scaleIn 0.6s ease-out forwards';
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav').classList.remove('active');
                 }
             });
-        };
-
-        // Set initial state for animated elements
-        const animatedElements = document.querySelectorAll('.food-item');
-        animatedElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'scale(0.95)';
         });
-
-        // Initialize scroll animations
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Run once on load
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1877,14 +1177,24 @@
             });
         });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    document.querySelector('nav').style.display = 'none';
+        // Animate elements on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.product-card');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementPosition < windowHeight - elementVisible) {
+                    element.style.animation = 'scaleIn 0.6s ease-out forwards';
                 }
             });
-        });
+        };
+
+        // Initialize scroll animations
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
     </script>
 </body>
 </html>
