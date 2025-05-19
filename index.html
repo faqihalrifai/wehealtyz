@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEHEALTY - Solusi Kesehatan Terpadu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -38,10 +38,10 @@
         }
         
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         /* Header Styles */
@@ -60,6 +60,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         .logo {
@@ -77,7 +78,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 15px;
         }
         
         nav a {
@@ -87,6 +88,9 @@
             transition: var(--transition);
             position: relative;
             padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         nav a:hover {
@@ -113,6 +117,8 @@
             font-size: 24px;
             cursor: pointer;
             color: white;
+            background: none;
+            border: none;
         }
         
         /* Hero Section */
@@ -121,12 +127,20 @@
             background: linear-gradient(135deg, rgba(0, 180, 183, 0.1) 0%, rgba(255, 126, 95, 0.1) 100%);
         }
         
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
         .hero-content {
             max-width: 600px;
+            width: 100%;
         }
         
         .hero h2 {
-            font-size: 42px;
+            font-size: clamp(28px, 5vw, 42px);
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -134,7 +148,7 @@
         }
         
         .hero p {
-            font-size: 18px;
+            font-size: clamp(16px, 2vw, 18px);
             color: var(--gray);
             margin-bottom: 30px;
         }
@@ -160,8 +174,14 @@
             box-shadow: 0 6px 12px rgba(0, 168, 168, 0.2);
         }
         
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 30px;
+        }
+        
         .hero-image img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -170,11 +190,12 @@
         /* Section Styles */
         .section {
             padding: 80px 0;
+            width: 100%;
         }
         
         .section-title {
             text-align: center;
-            font-size: 32px;
+            font-size: clamp(28px, 4vw, 32px);
             font-weight: 700;
             margin-bottom: 50px;
             color: var(--primary-dark);
@@ -199,6 +220,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
+            width: 100%;
         }
         
         .card {
@@ -243,12 +265,12 @@
             margin-bottom: 8px;
         }
 
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            justify-content: center;
             padding: 20px;
+            width: 100%;
         }
         
         .health-card {
@@ -260,7 +282,7 @@
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            width: 300px;
+            width: 100%;
             min-height: 250px;
         }
         
@@ -272,7 +294,7 @@
         .card-icon {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: #4CAF50;
+            color: #00b4b7;
         }
         
         .health-card h3 {
@@ -288,7 +310,7 @@
         
         .card-badge {
             display: inline-block;
-            background: #4CAF50;
+            background: #00b4b7;
             color: white;
             padding: 3px 10px;
             border-radius: 20px;
@@ -309,6 +331,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            width: 100%;
         }
         
         .tool-card {
@@ -329,6 +352,10 @@
             margin-bottom: 20px;
             color: var(--primary);
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .tool-form {
@@ -343,6 +370,7 @@
             border-radius: var(--radius);
             font-size: 14px;
             transition: var(--transition);
+            width: 100%;
         }
         
         .tool-form input:focus, .tool-form select:focus {
@@ -359,6 +387,7 @@
             border-radius: var(--radius);
             cursor: pointer;
             transition: var(--transition);
+            width: 100%;
         }
         
         .tool-form button:hover {
@@ -398,7 +427,7 @@
         
         /* AI Assistant Styles */
         .ai-assistant {
-            grid-column: span 2;
+            grid-column: 1 / -1;
         }
         
         .ai-chat {
@@ -494,6 +523,7 @@
             padding: 30px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            width: 100%;
         }
         
         .form-group {
@@ -619,52 +649,55 @@
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .hero h2 {
-                font-size: 36px;
+            .hero {
+                text-align: center;
+            }
+            
+            .hero .container {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                margin-bottom: 40px;
             }
             
             .ai-assistant {
-                grid-column: span 1;
+                grid-column: 1 / -1;
             }
         }
         
         @media (max-width: 768px) {
             nav {
                 display: none;
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
             }
             
             .mobile-menu {
                 display: block;
             }
             
-            .hero {
-                padding: 120px 0 60px;
-                text-align: center;
-            }
-            
-            .hero h2 {
-                font-size: 32px;
-            }
-            
-            .hero-content {
-                margin: 0 auto 40px;
-            }
-            
-            .section-title {
-                font-size: 28px;
+            .section {
+                padding: 60px 0;
             }
         }
         
         @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 28px;
+            .card, .health-card {
+                padding: 20px;
             }
             
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .card {
+            .tool-card {
                 padding: 20px;
             }
         }
@@ -676,32 +709,29 @@
             <div class="logo">
                 <h1>WEHEALTY</h1>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="pages/foods.html">Makanan</a></li>
-                    <li><a href="pages/sports.html">Olahraga</a></li>
-                    <li><a href="pages/skincare.html">Skincare</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#services">Layanan</a></li>
-                    <li><a href="#tools">Alat Kesehatan</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                </ul>
-            <nav>
-            </div>
-            <nav>
-                 <ul>
-                    <li><a href="#" id="demo-btn">
-                <i class="fas fa-user-secret"></i> Demo</a></li>
-            <div class="mobile-menu">
+            
+            <button class="mobile-menu">
                 <i class="fas fa-bars"></i>
-            </div>
-            <nav>
+            </button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="pages/foods.html"><i class="fas fa-utensils"></i> Makanan</a></li>
+                    <li><a href="pages/sports.html"><i class="fas fa-running"></i> Olahraga</a></li>
+                    <li><a href="pages/skincare.html"><i class="fas fa-spa"></i> Skincare</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Layanan</a></li>
+                    <li><a href="#tools"><i class="fas fa-tools"></i> Alat Kesehatan</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Kontak</a></li>
+                    <li><a href="#" id="demo-btn"><i class="fas fa-user-secret"></i> Demo</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <section id="home" class="hero">
-        <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <div class="container">
             <div class="hero-content">
                 <h2>Hidup Sehat Ala WEHEALTY</h2>
                 <p>Mulai perjalanan kesehatan Anda dengan panduan ahli kami untuk mencapai gaya hidup sehat yang berkelanjutan.</p>
@@ -747,8 +777,8 @@
         </div>
     </section>
 
-    <main class="container">
-        <section class="services-section">
+    <section id="services" class="section services">
+        <div class="container">
             <h2 class="section-title">Layanan Saya</h2>
             
             <div class="cards-container">
@@ -788,11 +818,7 @@
                     </div>
                 </a>
             </div>
-        </section>
-    </main>
-
-    <!-- Load JavaScript -->
-    <script src="js/script.js"></script>
+        </div>
     </section>
 
     <section id="tools" class="section health-tools">
@@ -801,7 +827,7 @@
             <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 700px; margin-left: auto; margin-right: auto;">Gunakan alat kesehatan digital kami untuk memantau dan meningkatkan kesehatan Anda sehari-hari.</p>
             <div class="tools-container">
                 <div class="tool-card">
-                    <h3><i class="fas fa-weight" style="margin-right: 10px;"></i>Kalkulator BMI</h3>
+                    <h3><i class="fas fa-weight"></i>Kalkulator BMI</h3>
                     <div class="tool-form">
                         <input type="number" id="height" placeholder="Tinggi (cm)" min="100" max="250">
                         <input type="number" id="weight" placeholder="Berat (kg)" min="30" max="200">
@@ -817,7 +843,7 @@
                     <p style="font-size: 12px; color: var(--gray); margin-top: 15px; text-align: center;">BMI (Body Mass Index) mengukur proporsi berat terhadap tinggi badan Anda.</p>
                 </div>
                 <div class="tool-card">
-                    <h3><i class="fas fa-fire-alt" style="margin-right: 10px;"></i>Pengecek Kalori Harian</h3>
+                    <h3><i class="fas fa-fire-alt"></i>Pengecek Kalori Harian</h3>
                     <div class="tool-form">
                         <input type="number" id="age" placeholder="Usia" min="10" max="120">
                         <select id="gender">
@@ -845,8 +871,103 @@
                     </div>
                     <p style="font-size: 12px; color: var(--gray); margin-top: 15px; text-align: center;">Kalkulator ini memperkirakan kebutuhan kalori harian berdasarkan profil Anda.</p>
                 </div>
+                <div class="tool-card">
+                    <h3><i class="fas fa-heartbeat"></i> Pengecek Denyut Jantung</h3>
+                    <div class="tool-form">
+                        <input type="number" id="hr-age" placeholder="Usia (tahun)" min="10" max="120">
+                        <select id="hr-activity">
+                            <option value="">Level Aktivitas</option>
+                            <option value="sedentary">Sedentary (minim olahraga)</option>
+                            <option value="moderate">Moderat (olahraga 3-5x/minggu)</option>
+                            <option value="active">Aktif (atlet/olahraga intensif)</option>
+                        </select>
+                        <input type="number" id="hr-current" placeholder="Denyut jantung saat ini (bpm)" min="40" max="200">
+                        <button onclick="calculateHeartRate()">Analisis</button>
+                        <div id="hr-result"></div>
+                        <div id="hr-details" class="hr-details" style="display: none;">
+                            <h4>Detail Analisis:</h4>
+                            <div id="hr-zones"></div>
+                            <div id="hr-recommendations"></div>
+                        </div>
+                    </div>
+                    <p style="font-size: 12px; color: var(--gray); margin-top: 15px; text-align: center;">
+    Kalkulator ini menganalisis zona denyut jantung optimal berdasarkan profil Anda.
+  </p>
+                </div>
+
+<script>
+// Heart Rate Calculator with AI Analysis
+function calculateHeartRate() {
+  const age = parseInt(document.getElementById('hr-age').value);
+  const activity = document.getElementById('hr-activity').value;
+  const currentHR = parseInt(document.getElementById('hr-current').value);
+
+  if (age && activity && currentHR) {
+    const maxHR = 220 - age;
+    const zones = {
+      "Resting": `${Math.round(maxHR*0.4)}-${Math.round(maxHR*0.5)} bpm`,
+      "Fat Burning": `${Math.round(maxHR*0.6)}-${Math.round(maxHR*0.7)} bpm`,
+      "Cardio": `${Math.round(maxHR*0.7)}-${Math.round(maxHR*0.8)} bpm`,
+      "Peak": `${Math.round(maxHR*0.8)}-${maxHR} bpm`
+    };
+
+    let analysis = "";
+    if (currentHR < maxHR*0.5) analysis = "Denyut jantung Anda rendah (zona istirahat)";
+    else if (currentHR < maxHR*0.7) analysis = "Denyut jantung optimal untuk pembakaran lemak";
+    else if (currentHR < maxHR*0.8) analysis = "Denyut jantung dalam zona kardio";
+    else analysis = "Denyut jantung dalam zona intensitas tinggi";
+
+    // AI-generated recommendations
+    let recommendations = "";
+    if (activity === "sedentary" && currentHR > maxHR*0.6) {
+      recommendations = "⚡ <strong>Rekomendasi AI:</strong> Mulai dengan olahraga ringan (jalan cepat 30 menit/hari) sebelum meningkatkan intensitas.";
+    } else if (activity === "moderate") {
+      recommendations = "⚡ <strong>Rekomendasi AI:</strong> Pertahankan rutinitas saat ini. Variasikan dengan HIIT 1-2x/minggu untuk hasil maksimal.";
+    } else if (currentHR > maxHR*0.85) {
+      recommendations = "⚠️ <strong>Peringatan AI:</strong> Denyut jantung mendekati maksimal. Kurangi intensitas dan konsultasi dokter jika sering terjadi.";
+    } else {
+      recommendations = "💡 <strong>Tip AI:</strong> Gunakan smartwatch untuk memantau denyut jantung real-time selama berolahraga.";
+    }
+
+    document.getElementById('hr-result').innerHTML = `
+      <strong>Hasil Analisis:</strong> ${analysis}<br>
+      <strong>Denyut Maksimal (${age} tahun):</strong> ${maxHR} bpm
+    `;
+
+    document.getElementById('hr-zones').innerHTML = `
+      <p><strong>Zona Denyut Jantung:</strong></p>
+      <ul>
+        <li><strong>Istirahat:</strong> ${zones.Resting}</li>
+        <li><strong>Pembakaran Lemak:</strong> ${zones["Fat Burning"]}</li>
+        <li><strong>Kardio:</strong> ${zones.Cardio}</li>
+        <li><strong>Intensitas Tinggi:</strong> ${zones.Peak}</li>
+      </ul>
+    `;
+
+    document.getElementById('hr-recommendations').innerHTML = recommendations;
+    document.getElementById('hr-details').style.display = 'block';
+  } else {
+    alert("Silakan lengkapi semua data");
+  }
+}
+</script>
+
+<style>
+/* Match existing calculator styles */
+.hr-details {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: rgba(0, 168, 168, 0.05);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+}
+.hr-details h4 {
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+}
+</style>
                 <div class="tool-card ai-assistant">
-                    <h3><i class="fas fa-robot" style="margin-right: 10px;"></i>AI Health Assistant</h3>
+                    <h3><i class="fas fa-robot"></i>AI Health Assistant</h3>
                     <div class="ai-chat">
                         <div class="ai-chat-messages" id="ai-chat-messages">
                             <div class="ai-message bot">
@@ -908,28 +1029,28 @@
                 <div class="footer-links">
                     <h4>Tautan Cepat</h4>
                     <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="pages/foods.html">Makanan</a></li>
-                        <li><a href="pages/sports.html">Olahraga</a></li>
-                        <li><a href="pages/skincare.html">Skincare</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="pages/foods.html"><i class="fas fa-chevron-right"></i> Makanan</a></li>
+                        <li><a href="pages/sports.html"><i class="fas fa-chevron-right"></i> Olahraga</a></li>
+                        <li><a href="pages/skincare.html"><i class="fas fa-chevron-right"></i> Skincare</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Layanan</h4>
                     <ul>
-                        <li><a href="#services">Konsultasi</a></li>
-                        <li><a href="#tools">Alat Kesehatan</a></li>
-                        <li><a href="#about">Tentang saya</a></li>
-                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Konsultasi</a></li>
+                        <li><a href="#tools"><i class="fas fa-chevron-right"></i> Alat Kesehatan</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang saya</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Kontak</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Informasi</h4>
                     <ul>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kebijakan Privasi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Syarat & Ketentuan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -940,6 +1061,11 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+
         // BMI Calculator with Detailed Results
         function calculateBMI() {
             const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
@@ -1070,9 +1196,8 @@
             }
         }
         
-        // AI Health Assistant dengan respon super cepat dan luas
+        // AI Health Assistant Knowledge Base
         const aiKnowledgeBase = {
-            // Penyakit dan Gejala
             "diabetes": {
                 response: `<strong>Diabetes Mellitus</strong> adalah penyakit metabolik dengan kadar gula darah tinggi.<br><br>
                 <strong>Gejala umum:</strong>
@@ -1083,23 +1208,11 @@
                     <li>Penglihatan kabur</li>
                     <li>Luka sulit sembuh</li>
                     <li>Kelelahan</li>
-                </ul>
-                
-                <strong>Pencegahan (Diabetes Tipe 2):</strong>
-                <ul>
-                    <li>Pertahankan berat badan sehat (BMI 18.5-22.9)</li>
-                    <li>Aktivitas fisik 150 menit/minggu</li>
-                    <li>Diet tinggi serat, rendah gula dan lemak jenuh</li>
-                    <li>Hindari merokok dan alkohol berlebihan</li>
-                    <li>Periksa gula darah rutin jika berisiko</li>
                 </ul>`,
                 sources: [
-                    {name: "WHO", url: "https://www.who.int/news-room/fact-sheets/detail/diabetes"},
-                    {name: "IDF", url: "https://idf.org/"}
+                    {name: "WHO", url: "https://www.who.int/news-room/fact-sheets/detail/diabetes"}
                 ]
             },
-            
-            // Nutrisi dan Diet
             "diet sehat": {
                 response: `<strong>Panduan Diet Sehat untuk Menurunkan Berat Badan</strong><br><br>
                 <strong>1. Defisit Kalori:</strong> Kurangi 300-500kkal dari kebutuhan harian<br>
@@ -1108,206 +1221,12 @@
                     <li>Protein: 1.6-2.2g/kg berat badan (ayam, ikan, telur, tempe)</li>
                     <li>Lemak sehat: 25-30% kalori (alpukat, kacang, minyak zaitun)</li>
                     <li>Karbohidrat kompleks: 45-55% kalori (beras merah, quinoa, ubi)</li>
-                </ul>
-                
-                <strong>Contoh Pola Makan:</strong>
-                <ul>
-                    <li><strong>Sarapan:</strong> Oatmeal + telur rebus + alpukat</li>
-                    <li><strong>Snack:</strong> Greek yogurt + beri</li>
-                    <li><strong>Makan siang:</strong> Nasi merah + ikan + sayuran</li>
-                    <li><strong>Snack:</strong> Kacang almond</li>
-                    <li><strong>Makan malam:</strong> Dada ayam + brokoli + ubi</li>
-                </ul>
-                
-                <strong>Tips Tambahan:</strong>
-                <ul>
-                    <li>Minum air sebelum makan</li>
-                    <li>Makan perlahan (20-30 kunyah per suap)</li>
-                    <li>Tidur cukup 7-8 jam/hari</li>
-                    <li>Kombinasikan dengan olahraga 3-5x/minggu</li>
                 </ul>`,
                 sources: [
-                    {name: "Harvard Nutrition", url: "https://www.hsph.harvard.edu/nutritionsource/healthy-weight/"},
-                    {name: "Kemenkes RI", url: "https://promkes.kemkes.go.id/gizi-seimbang"}
-                ]
-            },
-            
-            // Olahraga
-            "olahraga pemula": {
-                response: `<strong>Program Olahraga untuk Pemula Usia 40 Tahun</strong><br><br>
-                <strong>1. Pemanasan (5-10 menit):</strong> Jalan cepat, stretching dinamis<br>
-                <strong>2. Latihan Inti (30 menit, 3-5x/minggu):</strong>
-                <ul>
-                    <li><strong>Senin/Kamis:</strong> Jalan cepat/senam low impact</li>
-                    <li><strong>Selasa/Jumat:</strong> Latihan kekuatan (squat, push-up di dinding, plank)</li>
-                    <li><strong>Sabtu:</strong> Yoga/aktivitas fleksibilitas</li>
-                </ul>
-                
-                <strong>3. Pendinginan (5-10 menit):</strong> Stretching statis<br>
-                
-                <strong>Tips Penting:</strong>
-                <ul>
-                    <li>Mulai perlahan, intensitas 5-6/10 (skala usaha)</li>
-                    <li>Gunakan sepatu olahraga yang nyaman</li>
-                    <li>Minum cukup air sebelum, selama, dan setelah olahraga</li>
-                    <li>Perhatikan sinyal tubuh, berhenti jika nyeri</li>
-                    <li>Konsultasi dokter jika ada kondisi medis</li>
-                </ul>`,
-                sources: [
-                    {name: "ACSM Guidelines", url: "https://www.acsm.org/education-resources/trending-topics-resources/physical-activity-guidelines"},
-                    {name: "Mayo Clinic", url: "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/exercise/art-20048389"}
-                ]
-            },
-            
-            // Skincare
-            "skincare": {
-                response: `<strong>Rutin Skincare untuk Kulit Berminyak dan Berjerawat</strong><br><br>
-                <strong>1. Pagi:</strong>
-                <ul>
-                    <li><strong>Pembersih:</strong> Gel cleanser pH balanced (CeraVe, Cetaphil)</li>
-                    <li><strong>Toner:</strong> Mengandung niacinamide atau witch hazel</li>
-                    <li><strong>Serum:</strong> Vitamin C atau niacinamide</li>
-                    <li><strong>Moisturizer:</strong> Oil-free, non-comedogenic</li>
-                    <li><strong>Sunscreen:</strong> SPF 30+, oil-free</li>
-                </ul>
-                
-                <strong>2. Malam:</strong>
-                <ul>
-                    <li><strong>Double cleanse:</strong> Micellar water + foam cleanser</li>
-                    <li><strong>Eksfoliasi (2-3x/minggu):</strong> BHA 2% (salicylic acid)</li>
-                    <li><strong>Serum:</strong> Retinol (mulai 1-2x/minggu) atau azelaic acid</li>
-                    <li><strong>Moisturizer:</strong> Sama seperti pagi</li>
-                </ul>
-                
-                <strong>Tips Tambahan:</strong>
-                <ul>
-                    <li>Ganti sarung bantal 2x/minggu</li>
-                    <li>Hindari menyentuh wajah</li>
-                    <li>Produk anti-jerawat spot treatment: Benzoyl peroxide 2.5%</li>
-                    <li>Konsultasi dermatologis jika jerawat parah</li>
-                </ul>`,
-                sources: [
-                    {name: "AAD", url: "https://www.aad.org/public/everyday-care/skin-care-basics"},
-                    {name: "Journal of Dermatological Treatment", url: "https://www.tandfonline.com/toc/ijdt20/current"}
+                    {name: "Harvard Nutrition", url: "https://www.hsph.harvard.edu/nutritionsource/healthy-weight/"}
                 ]
             }
         };
-
-        // Fungsi untuk mencari jawaban dengan pemahaman konteks lebih baik
-        function findAIResponse(query) {
-            query = query.toLowerCase();
-            
-            // Cek pertanyaan spesifik terlebih dahulu
-            const specificResponses = {
-                "gejala diabetes": "diabetes",
-                "cara mencegah diabetes": "diabetes",
-                "menu diet sehat": "diet sehat",
-                "cara menurunkan berat badan": "diet sehat",
-                "olahraga untuk pemula": "olahraga pemula",
-                "latihan untuk usia 40": "olahraga pemula",
-                "skincare berminyak": "skincare",
-                "perawatan wajah berjerawat": "skincare"
-            };
-            
-            // Cari pertanyaan spesifik
-            for (const [key, value] of Object.entries(specificResponses)) {
-                if (query.includes(key)) {
-                    return aiKnowledgeBase[value];
-                }
-            }
-            
-            // Cari berdasarkan kata kunci
-            const keywords = {
-                "diabet": "diabetes",
-                "gula darah": "diabetes",
-                "diet": "diet sehat",
-                "nutrisi": "diet sehat",
-                "kalori": "diet sehat",
-                "olahraga": "olahraga pemula",
-                "fitness": "olahraga pemula",
-                "latihan": "olahraga pemula",
-                "skincare": "skincare",
-                "jerawat": "skincare",
-                "kulit berminyak": "skincare"
-            };
-            
-            for (const [key, value] of Object.entries(keywords)) {
-                if (query.includes(key)) {
-                    return aiKnowledgeBase[value];
-                }
-            }
-            
-            // Jika tidak ditemukan, gunakan respon generik
-            return {
-                response: `Saya tidak menemukan informasi spesifik tentang "${query}". Namun, berikut beberapa informasi umum yang mungkin membantu:<br><br>
-                <ul>
-                    <li>Untuk pertanyaan medis spesifik, selalu konsultasikan dengan dokter</li>
-                    <li>Pola hidup sehat mencakup diet seimbang, olahraga teratur, dan manajemen stres</li>
-                    <li>Pemeriksaan kesehatan rutin penting untuk deteksi dini masalah kesehatan</li>
-                </ul>
-                Anda bisa mencoba pertanyaan seperti:
-                <ul>
-                    <li>"Apa gejala umum penyakit jantung?"</li>
-                    <li>"Bagaimana cara meningkatkan kualitas tidur?"</li>
-                    <li>"Makanan apa yang baik untuk daya tahan tubuh?"</li>
-                </ul>`,
-                sources: []
-            };
-        }
-
-        // Fungsi untuk menampilkan sumber/referensi
-        function renderSources(sources) {
-            if (!sources || sources.length === 0) return '';
-            
-            let html = '<div class="ai-sources"><strong>Sumber:</strong> ';
-            sources.forEach((source, index) => {
-                if (index > 0) html += ' | ';
-                html += `<a href="${source.url}" target="_blank">${source.name}</a>`;
-            });
-            html += '</div>';
-            
-            return html;
-        }
-
-        // Fungsi untuk menambahkan tools interaktif
-        function renderAITools(query) {
-            const tools = {
-                "diabetes": [
-                    {text: "Hitung Risiko Diabetes", action: "calculateDiabetesRisk()"},
-                    {text: "Cek Gula Darah Normal", action: "showBloodSugarLevels()"}
-                ],
-                "diet sehat": [
-                    {text: "Hitung Kebutuhan Kalori", action: "scrollToSection('calorie-calculator')"},
-                    {text: "Contoh Menu Diet", action: "showDietMenuExamples()"}
-                ],
-                "olahraga pemula": [
-                    {text: "Video Latihan", action: "showExerciseVideos()"},
-                    {text: "Jadwal Olahraga", action: "generateWorkoutPlan()"}
-                ],
-                "skincare": [
-                    {text: "Analisis Jenis Kulit", action: "analyzeSkinType()"},
-                    {text: "Rekomendasi Produk", action: "showProductRecommendations()"}
-                ]
-            };
-            
-            let matchedTool = null;
-            for (const [key, value] of Object.entries(tools)) {
-                if (query.toLowerCase().includes(key)) {
-                    matchedTool = value;
-                    break;
-                }
-            }
-            
-            if (!matchedTool) return '';
-            
-            let html = '<div class="ai-tools">';
-            matchedTool.forEach(tool => {
-                html += `<button onclick="${tool.action}">${tool.text}</button>`;
-            });
-            html += '</div>';
-            
-            return html;
-        }
 
         // Fungsi utama AI Assistant
         function sendAIMessage() {
@@ -1336,21 +1255,40 @@
             chatMessages.appendChild(typingIndicator);
             chatMessages.scrollTop = chatMessages.scrollHeight;
             
-            // Simulasikan pemrosesan AI (dalam aplikasi nyata bisa menggunakan API call)
+            // Simulasikan pemrosesan AI
             setTimeout(() => {
                 chatMessages.removeChild(typingIndicator);
                 
                 // Dapatkan respon AI
-                const aiResponse = findAIResponse(message);
+                let aiResponse;
+                if (message.toLowerCase().includes('diabet') || message.toLowerCase().includes('gula darah')) {
+                    aiResponse = aiKnowledgeBase["diabetes"];
+                } else if (message.toLowerCase().includes('diet') || message.toLowerCase().includes('nutrisi')) {
+                    aiResponse = aiKnowledgeBase["diet sehat"];
+                } else {
+                    aiResponse = {
+                        response: `Saya tidak menemukan informasi spesifik tentang "${message}". Anda bisa mencoba pertanyaan tentang diabetes, diet sehat, olahraga, atau skincare.`,
+                        sources: []
+                    };
+                }
                 
                 // Buat elemen pesan AI
                 const aiMessage = document.createElement('div');
                 aiMessage.className = 'ai-message bot';
-                aiMessage.innerHTML = aiResponse.response + renderSources(aiResponse.sources) + renderAITools(message);
+                aiMessage.innerHTML = aiResponse.response;
+                
+                if (aiResponse.sources.length > 0) {
+                    aiMessage.innerHTML += '<div class="ai-sources"><strong>Sumber:</strong> ';
+                    aiResponse.sources.forEach((source, index) => {
+                        if (index > 0) aiMessage.innerHTML += ' | ';
+                        aiMessage.innerHTML += `<a href="${source.url}" target="_blank">${source.name}</a>`;
+                    });
+                    aiMessage.innerHTML += '</div>';
+                }
                 
                 chatMessages.appendChild(aiMessage);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 800); // Waktu respon lebih cepat (800ms vs sebelumnya 1000ms)
+            }, 800);
         }
 
         // Fungsi untuk contoh pertanyaan
@@ -1367,82 +1305,10 @@
             }
         });
 
-        // Fungsi-fungsi tools (simulasi)
-        function calculateDiabetesRisk() {
-            addBotMessage(`<strong>Kalkulator Risiko Diabetes</strong><br><br>
-            Untuk menilai risiko diabetes tipe 2, jawab pertanyaan berikut:<br>
-            1. Usia di atas 45 tahun?<br>
-            2. Memiliki riwayat keluarga diabetes?<br>
-            3. Kelebihan berat badan (BMI > 23)?<br>
-            4. Jarang berolahraga (<3x/minggu)?<br>
-            5. Pernah memiliki gula darah tinggi?<br><br>
-            Jika menjawab "Ya" pada 3 atau lebih, disarankan pemeriksaan gula darah rutin.`);
-        }
-
-        function showBloodSugarLevels() {
-            addBotMessage(`<strong>Kadar Gula Darah Normal</strong><br><br>
-            <strong>Puasa (8 jam):</strong> 70-99 mg/dL<br>
-            <strong>2 jam setelah makan:</strong> <140 mg/dL<br>
-            <strong>Random:</strong> <200 mg/dL<br><br>
-            <strong>Prediabetes:</strong><br>
-            - Puasa: 100-125 mg/dL<br>
-            - 2 jam setelah makan: 140-199 mg/dL<br><br>
-            <strong>Diabetes:</strong><br>
-            - Puasa: ≥126 mg/dL<br>
-            - 2 jam setelah makan: ≥200 mg/dL<br>
-            - Random: ≥200 mg/dL dengan gejala`);
-        }
-
-        // Fungsi bantuan untuk menambahkan pesan bot
-        function addBotMessage(message) {
-            const chatMessages = document.getElementById('ai-chat-messages');
-            const aiMessage = document.createElement('div');
-            aiMessage.className = 'ai-message bot';
-            aiMessage.innerHTML = message;
-            chatMessages.appendChild(aiMessage);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Fungsi scroll tetap sama
+        // Fungsi scroll
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
-
-    <!-- Demo Account Modal -->
-<div id="demo-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2><i class="fas fa-user-secret"></i> Akun Demo WEHEALTY</h2>
-        <div class="demo-accounts">
-            <div class="demo-account">
-                <h3><i class="fas fa-user-cog"></i> Admin</h3>
-                <p>Email: admin@demo.wehealty</p>
-                <p>Password: DemoAdmin123</p>
-                <button class="btn primary-btn" onclick="loginDemo('admin')">
-                    <i class="fas fa-sign-in-alt"></i> Masuk sebagai Admin
-                </button>
-            </div>
-            <div class="demo-account">
-                <h3><i class="fas fa-user-md"></i> Dokter</h3>
-                <p>Email: doctor@demo.wehealty</p>
-                <p>Password: DemoDoctor123</p>
-                <button class="btn primary-btn" onclick="loginDemo('doctor')">
-                    <i class="fas fa-sign-in-alt"></i> Masuk sebagai Dokter
-                </button>
-            </div>
-            <div class="demo-account">
-                <h3><i class="fas fa-user-injured"></i> Pasien</h3>
-                <p>Email: patient@demo.wehealty</p>
-                <p>Password: DemoPatient123</p>
-                <button class="btn primary-btn" onclick="loginDemo('patient')">
-                    <i class="fas fa-sign-in-alt"></i> Masuk sebagai Pasien
-                </button>
-            </div>
-        </div>
-        <div class="demo-info">
-            <p><i class="fas fa-info-circle"></i> <strong>Mode Demo:</strong> Data tidak akan disimpan permanen.</p>
-        </div>
-    </div>
-</div>
 </body>
+</html>
