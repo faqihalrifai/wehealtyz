@@ -11,7 +11,7 @@
         :root {
             --primary: #00b4b7;
             --primary-dark: #008b8b;
-            --secondary: #ff7e5f;
+            --secondary: #60696b;
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
@@ -33,28 +33,16 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
-            background: linear-gradient(135deg, #f0ffff 0%, #e0ffff 50%, #afeeee 100%);
+            background-color: #f5f7fa;
             line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><path fill="%2340e0d0" opacity="0.1" d="M0,0V800H1200V0C1050,150,900,200,600,400C300,600,150,650,0,800Z"/></svg>');
-            background-size: cover;
-            z-index: -1;
-        }
-
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         /* Header Styles */
@@ -67,13 +55,13 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
-            animation: fadeIn 1s ease-in;
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -91,7 +79,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 15px;
         }
 
         nav a {
@@ -101,6 +89,9 @@
             transition: var(--transition);
             position: relative;
             padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         nav a:hover {
@@ -127,167 +118,140 @@
             font-size: 24px;
             cursor: pointer;
             color: white;
+            background: none;
+            border: none;
         }
 
         /* Main Content */
         main {
-            margin-top: 120px;
+            margin-top: 100px;
             padding: 40px 0;
         }
 
-        /* Sport Category Section */
-        .sport-category {
+        /* Sports Category Section */
+        .sports-category {
             margin-bottom: 60px;
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
             border-radius: var(--radius);
-            padding: 40px;
+            padding: 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid rgba(0, 180, 183, 0.2);
+            border-top: 4px solid var(--primary);
         }
 
-        .sport-category:hover {
-            box-shadow: 0 10px 30px rgba(0, 180, 183, 0.15);
+        .sports-category:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 180, 183, 0.15);
         }
 
-        .sport-category h3 {
+        .sports-category h3 {
             color: var(--primary-dark);
             margin-bottom: 30px;
             text-align: center;
-            font-size: 2rem;
+            font-size: 28px;
             position: relative;
             padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .sport-category h3::after {
+        .sports-category h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: var(--primary);
             border-radius: 3px;
         }
 
-        /* Sport Item Styles */
-        .sport-item {
-            margin-bottom: 50px;
-            padding: 30px;
+        /* Sports Grid Layout */
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Sports Item Styles */
+        .sports-item {
             background: white;
             border-radius: var(--radius);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             transition: var(--transition);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sports-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sports-image-container {
             position: relative;
+            height: 200px;
             overflow: hidden;
         }
 
-        .sport-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-        }
-
-        .sport-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 180, 183, 0.2);
-        }
-
-        .sport-item h4 {
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .sport-item h4::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .sport-item:hover h4::after {
-            width: 100%;
-        }
-
-        .sport-image-container {
-            position: relative;
-            margin-bottom: 20px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            height: 250px;
-        }
-
-        .sport-image {
+        .sports-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .sport-item:hover .sport-image {
+        .sports-item:hover .sports-image {
             transform: scale(1.05);
         }
 
-        .sport-image-container::after {
-            content: '';
+        .sports-name {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 40%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-        }
-
-        .sport-name {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            z-index: 2;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        .sport-description {
+        .sports-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sports-description {
             color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.7;
+            margin-bottom: 15px;
+            flex: 1;
         }
 
         /* Benefits Table */
         .benefits-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border-radius: var(--radius);
-            overflow: hidden;
+            margin: 15px 0;
+            font-size: 14px;
         }
 
         .benefits-table th, .benefits-table td {
-            padding: 12px 15px;
+            padding: 10px;
             text-align: left;
             border-bottom: 1px solid var(--light-gray);
         }
 
         .benefits-table th {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+            background-color: rgba(0, 180, 183, 0.1);
+            color: var(--primary-dark);
             font-weight: 500;
         }
 
@@ -299,16 +263,16 @@
             background-color: rgba(0, 180, 183, 0.1);
         }
 
-        .benefits-table td:last-child {
-            font-weight: 500;
-            color: var(--primary-dark);
+        .benefits-table i {
+            margin-right: 5px;
+            color: var(--primary);
         }
 
         /* Health Benefits */
         .health-benefits {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(0, 180, 183, 0.05);
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(0, 180, 183, 0.05);
             border-radius: var(--radius);
             border-left: 4px solid var(--primary);
         }
@@ -316,14 +280,10 @@
         .health-benefits h5 {
             color: var(--primary-dark);
             margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .health-benefits h5 i {
-            color: var(--secondary);
+            gap: 8px;
         }
 
         .benefits-list {
@@ -334,7 +294,8 @@
             margin-bottom: 8px;
             position: relative;
             padding-left: 25px;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 14px;
         }
 
         .benefits-list li::before {
@@ -346,68 +307,70 @@
             color: var(--success);
         }
 
-        /* Intensity Indicator */
-        .intensity-indicator {
+        /* Search and Filter Section */
+        .sports-filter {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
             display: flex;
-            align-items: center;
-            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .intensity-label {
-            margin-right: 10px;
-            font-weight: 500;
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 14px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--gray);
         }
 
-        .intensity-level {
-            display: flex;
-        }
-
-        .intensity-dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            margin-right: 5px;
-            background-color: var(--light-gray);
-        }
-
-        .intensity-dot.active {
-            background-color: var(--primary);
-        }
-
-        /* Equipment List */
-        .equipment-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .equipment-item {
-            background-color: rgba(0, 180, 183, 0.1);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--primary-dark);
+        .filter-group {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .filter-group select {
+            padding: 10px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 14px;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary-dark);
             color: white;
-            padding: 40px 0 20px;
-            text-align: center;
+            padding: 60px 0 0;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            margin-bottom: 30px;
-            text-align: left;
+            margin-bottom: 40px;
         }
 
         .footer-about h3 {
@@ -434,7 +397,6 @@
 
         .social-icons a:hover {
             color: var(--light-gray);
-            transform: translateY(-3px);
         }
 
         .footer-links h4 {
@@ -467,6 +429,9 @@
             text-decoration: none;
             font-size: 14px;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-links a:hover {
@@ -485,123 +450,29 @@
             font-size: 14px;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes scaleIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .sport-category {
-                padding: 30px;
-            }
-            
-            .sport-item {
-                padding: 25px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-dark);
-                padding: 20px 0;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-                padding: 0 20px;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            main {
-                margin-top: 100px;
-            }
-            
-            .sport-category {
-                padding: 25px;
-            }
-            
-            .sport-item {
-                padding: 20px;
-            }
-            
-            .sport-image-container {
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .sport-category {
-                padding: 20px;
-            }
-            
-            .sport-item {
-                padding: 15px;
-            }
-            
-            .sport-name {
-                font-size: 1.5rem;
-            }
-            
-            .benefits-table th, 
-            .benefits-table td {
-                padding: 8px 10px;
-                font-size: 14px;
-            }
-        }
-
         /* Floating Action Button */
-        .fab-container {
+        .fab {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            z-index: 999;
-        }
-
-        .fab {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 4px 20px rgba(0, 180, 183, 0.3);
+            box-shadow: var(--shadow);
             cursor: pointer;
             transition: var(--transition);
-            animation: float 3s ease-in-out infinite;
+            z-index: 999;
         }
 
         .fab:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 180, 183, 0.4);
+            background: var(--primary-dark);
+            transform: scale(1.1);
         }
 
         /* Back to Top Button */
@@ -633,896 +504,356 @@
             background: var(--primary);
             color: white;
         }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .sports-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            main {
+                margin-top: 80px;
+            }
+            
+            .sports-category {
+                padding: 20px;
+            }
+            
+            .sports-filter {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sports-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sports-name {
+                font-size: 1.3rem;
+            }
+            
+            .benefits-table th, 
+            .benefits-table td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>WEHEALTY</h1>
+            </div>
+            
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="foods.html"><i class="fas fa-utensils"></i> Makanan</a></li>
+                    <li><a href="sports.html" class="active"><i class="fas fa-running"></i> Olahraga</a></li>
+                    <li><a href="skincare.html"><i class="fas fa-spa"></i> Skincare</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                    <li><a href="index.html#tools"><i class="fas fa-tools"></i> Alat Kesehatan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <main class="container">
-        <section id="cardio" class="sport-category">
-            <h3><i class="fas fa-heartbeat"></i> Latihan Kardio</h3>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Running" class="sport-image">
-                    <div class="sport-name">Lari</div>
-                </div>
-                
-                <p class="sport-description">Lari adalah salah satu bentuk latihan kardio paling efektif yang meningkatkan kesehatan jantung, membakar kalori, dan meningkatkan daya tahan. Aktivitas ini bisa dilakukan di mana saja tanpa peralatan khusus, mulai dari jogging santai hingga sprint intens.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                    </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Sedang-Tinggi</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-shoe-prints"></i> Sepatu Lari</div>
-                    <div class="equipment-item"><i class="fas fa-stopwatch"></i> Stopwatch</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan kapasitas paru-paru dan sistem kardiovaskular</li>
-                        <li>Membakar hingga 600 kalori per jam (tergantung intensitas)</li>
-                        <li>Memperkuat tulang dan sendi (dengan teknik yang tepat)</li>
-                        <li>Meningkatkan produksi endorfin untuk mengurangi stres</li>
-                        <li>Meningkatkan kualitas tidur dan pola tidur</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>100 kalori/mil (tergantung berat badan)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-heart"></i> Denyut Jantung Target</td>
-                            <td>50-85% dari maksimum (220-usia)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>30-60 menit, 3-5x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-running"></i> Jenis Lari</td>
-                            <td>Jogging, Interval, Fartlek, Hill Run</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua level (mulai bertahap untuk pemula)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sedang (perhatikan teknik dan alas kaki)</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Sports Filter Section -->
+        <section class="sports-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="sports-search" placeholder="Cari olahraga...">
             </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Cycling" class="sport-image">
-                    <div class="sport-name">Bersepeda</div>
-                </div>
-                
-                <p class="sport-description">Bersepeda adalah latihan kardio low-impact yang membangun kekuatan kaki dan stamina tanpa membebani sendi. Aktivitas ini bisa dilakukan di jalan raya, gunung, atau dengan sepeda statis di gym. Bersepeda juga merupakan transportasi ramah lingkungan yang bisa menghemat biaya.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                    </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Ringan-Sedang</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-bicycle"></i> Sepeda</div>
-                    <div class="equipment-item"><i class="fas fa-helmet-safety"></i> Helm</div>
-                    <div class="equipment-item"><i class="fas fa-bottle-water"></i> Botol Air</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan kesehatan jantung dan paru-paru</li>
-                        <li>Menguatkan otot kaki, pinggul, dan glutes</li>
-                        <li>Membakar 400-1000 kalori per jam tergantung intensitas</li>
-                        <li>Meningkatkan koordinasi dan keseimbangan</li>
-                        <li>Mengurangi risiko penyakit kronis seperti diabetes tipe 2</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>400-1000 kalori/jam (tergantung kecepatan)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-heart"></i> Denyut Jantung Target</td>
-                            <td>60-80% dari maksimum</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>45-90 menit, 3-5x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-biking"></i> Jenis Bersepeda</td>
-                            <td>Jalan raya, Gunung, Indoor, Touring</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua usia dan level kebugaran</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Rendah (dengan perlengkapan keselamatan)</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="filter-group">
+                <label for="sports-category"><i class="fas fa-filter"></i> Kategori:</label>
+                <select id="sports-category">
+                    <option value="all">Semua</option>
+                    <option value="cardio">Kardio</option>
+                    <option value="strength">Kekuatan</option>
+                    <option value="flexibility">Fleksibilitas</option>
+                </select>
             </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Swimming" class="sport-image">
-                    <div class="sport-name">Berenang</div>
-                </div>
-                
-                <p class="sport-description">Berenang adalah latihan seluruh tubuh yang meningkatkan kekuatan, daya tahan, dan fleksibilitas dengan dampak minimal pada sendi. Olahraga air ini cocok untuk semua usia dan level kebugaran, bahkan untuk rehabilitasi cedera atau kondisi seperti arthritis.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                    </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Sedang-Tinggi</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-swimming-pool"></i> Kolam Renang</div>
-                    <div class="equipment-item"><i class="fas fa-glasses"></i> Kacamata Renang</div>
-                    <div class="equipment-item"><i class="fas fa-hat-cowboy-side"></i> Topi Renang</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Melatih seluruh kelompok otot utama secara simultan</li>
-                        <li>Meningkatkan kapasitas paru-paru dan kontrol pernapasan</li>
-                        <li>Membakar 400-700 kalori per jam tergantung gaya</li>
-                        <li>Meningkatkan fleksibilitas dan postur tubuh</li>
-                        <li>Mengurangi stres dan meningkatkan relaksasi</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>400-700 kalori/jam (tergantung gaya)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-heart"></i> Denyut Jantung Target</td>
-                            <td>50-80% dari maksimum</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>30-60 menit, 3-4x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-swimmer"></i> Gaya Renang</td>
-                            <td>Dada, Bebas, Punggung, Kupu-kupu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua usia, termasuk rehabilitasi</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sangat Rendah</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="filter-group">
+                <label for="intensity-filter"><i class="fas fa-bolt"></i> Intensitas:</label>
+                <select id="intensity-filter">
+                    <option value="all">Semua</option>
+                    <option value="low">Rendah</option>
+                    <option value="medium">Sedang</option>
+                    <option value="high">Tinggi</option>
+                </select>
             </div>
         </section>
 
-        <section id="strength" class="sport-category">
+        <!-- Cardio Section -->
+        <section id="cardio" class="sports-category" data-category="cardio">
+            <h3><i class="fas fa-heartbeat"></i> Olahraga Kardio</h3>
+            
+            <div class="sports-grid">
+                <!-- Lari -->
+                <div class="sports-item" data-intensity="high">
+                    <div class="sports-image-container">
+                        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lari" class="sports-image">
+                        <div class="sports-name">Lari</div>
+                    </div>
+                    
+                    <div class="sports-content">
+                        <p class="sports-description">Lari adalah olahraga kardio yang efektif untuk membakar kalori, meningkatkan kesehatan jantung, dan meningkatkan stamina tubuh secara keseluruhan.</p>
+                        
+                        <table class="benefits-table">
+                            <tr>
+                                <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
+                                <td>600-800 kcal/jam</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Intensitas</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-clock"></i> Durasi Ideal</td>
+                                <td>30-60 menit</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="health-benefits">
+                            <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                            <ul class="benefits-list">
+                                <li>Meningkatkan kesehatan kardiovaskular</li>
+                                <li>Membakar lemak secara efektif</li>
+                                <li>Meningkatkan kapasitas paru-paru</li>
+                                <li>Mengurangi stres dan meningkatkan mood</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bersepeda -->
+                <div class="sports-item" data-intensity="medium">
+                    <div class="sports-image-container">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Bersepeda" class="sports-image">
+                        <div class="sports-name">Bersepeda</div>
+                    </div>
+                    
+                    <div class="sports-content">
+                        <p class="sports-description">Bersepeda adalah olahraga low-impact yang bagus untuk sendi, membantu membangun kekuatan kaki, dan meningkatkan kesehatan jantung.</p>
+                        
+                        <table class="benefits-table">
+                            <tr>
+                                <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
+                                <td>400-600 kcal/jam</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Intensitas</td>
+                                <td>Sedang-Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-clock"></i> Durasi Ideal</td>
+                                <td>45-90 menit</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="health-benefits">
+                            <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                            <ul class="benefits-list">
+                                <li>Menguatkan otot kaki dan inti</li>
+                                <li>Meningkatkan stamina dan daya tahan</li>
+                                <li>Baik untuk kesehatan sendi</li>
+                                <li>Mengurangi risiko penyakit jantung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strength Section -->
+        <section id="strength" class="sports-category" data-category="strength">
             <h3><i class="fas fa-dumbbell"></i> Latihan Kekuatan</h3>
             
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Weight Lifting" class="sport-image">
-                    <div class="sport-name">Angkat Beban</div>
-                </div>
-                
-                <p class="sport-description">Angkat beban adalah latihan kekuatan yang menggunakan beban eksternal untuk melawan gravitasi, merangsang pertumbuhan otot, dan meningkatkan kepadatan tulang. Latihan ini bisa dilakukan dengan barbel, dumbbell, atau mesin di gym untuk membentuk tubuh dan meningkatkan metabolisme.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
+            <div class="sports-grid">
+                <!-- Angkat Beban -->
+                <div class="sports-item" data-intensity="high">
+                    <div class="sports-image-container">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Angkat Beban" class="sports-image">
+                        <div class="sports-name">Angkat Beban</div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Tinggi</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-dumbbell"></i> Dumbbell</div>
-                    <div class="equipment-item"><i class="fas fa-weight-hanging"></i> Barbell</div>
-                    <div class="equipment-item"><i class="fas fa-dumbbell"></i> Weight Plate</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan massa otot dan kekuatan</li>
-                        <li>Meningkatkan metabolisme basal (membakar lebih banyak kalori saat istirahat)</li>
-                        <li>Memperkuat tulang dan mengurangi risiko osteoporosis</li>
-                        <li>Meningkatkan postur tubuh dan keseimbangan</li>
-                        <li>Mengurangi risiko cedera dalam aktivitas sehari-hari</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>200-400 kalori/jam (tergantung intensitas)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-dumbbell"></i> Jenis Latihan</td>
-                            <td>Compound (deadlift, squat, bench press) & Isolasi</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>45-60 menit, 3-4x/minggu (per kelompok otot)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-chart-line"></i> Progresi</td>
-                            <td>Tambah beban secara bertahap (5-10%)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Remaja hingga lanjut usia (dengan penyesuaian)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sedang-Tinggi (teknik sangat penting)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Bodyweight Exercises" class="sport-image">
-                    <div class="sport-name">Latihan Berat Badan</div>
-                </div>
-                
-                <p class="sport-description">Latihan berat badan menggunakan tubuh sendiri sebagai beban, seperti push-up, pull-up, dan squat. Metode ini efektif untuk membangun kekuatan fungsional, meningkatkan mobilitas, dan bisa dilakukan di mana saja tanpa peralatan khusus. Sangat cocok untuk pemula hingga atlet.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
+                    
+                    <div class="sports-content">
+                        <p class="sports-description">Latihan angkat beban membantu membangun massa otot, meningkatkan metabolisme, dan memperkuat tulang serta sendi.</p>
+                        
+                        <table class="benefits-table">
+                            <tr>
+                                <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
+                                <td>300-500 kcal/jam</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Intensitas</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-clock"></i> Durasi Ideal</td>
+                                <td>45-60 menit</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="health-benefits">
+                            <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                            <ul class="benefits-list">
+                                <li>Meningkatkan kekuatan dan massa otot</li>
+                                <li>Memperbaiki postur tubuh</li>
+                                <li>Meningkatkan kepadatan tulang</li>
+                                <li>Meningkatkan metabolisme tubuh</li>
+                            </ul>
+                        </div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Ringan-Sedang</span>
                 </div>
                 
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-mat"></i> Matras</div>
-                    <div class="equipment-item"><i class="fas fa-pullup-bar"></i> Pull-up Bar</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan kekuatan fungsional untuk aktivitas sehari-hari</li>
-                        <li>Mengembangkan kekuatan inti dan stabilitas</li>
-                        <li>Meningkatkan fleksibilitas dan koordinasi</li>
-                        <li>Membakar 200-400 kalori per jam tergantung intensitas</li>
-                        <li>Dapat disesuaikan untuk semua level kebugaran</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>200-400 kalori/jam (tergantung intensitas)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-dumbbell"></i> Jenis Latihan</td>
-                            <td>Push-up, Pull-up, Squat, Plank, Lunges</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>30-45 menit, 3-5x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-chart-line"></i> Progresi</td>
-                            <td>Tambah repetisi, set, atau variasi sulit</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua level (mulai dari modifikasi mudah)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Rendah-Sedang (dengan teknik tepat)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1595079835353-a6f2e8a6c46c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Resistance Band Training" class="sport-image">
-                    <div class="sport-name">Latihan Resistance Band</div>
-                </div>
-                
-                <p class="sport-description">Resistance band memberikan ketahanan variabel untuk latihan kekuatan yang portabel dan ramah sendi. Alat ini ideal untuk latihan di rumah, perjalanan, atau rehabilitasi. Resistance band tersedia dalam berbagai tingkat ketahanan untuk semua level kebugaran.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
+                <!-- Push-up -->
+                <div class="sports-item" data-intensity="medium">
+                    <div class="sports-image-container">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Push-up" class="sports-image">
+                        <div class="sports-name">Push-up</div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Ringan-Sedang</span>
+                    
+                    <div class="sports-content">
+                        <p class="sports-description">Push-up adalah latihan tubuh bagian atas yang efektif untuk membangun kekuatan dada, bahu, trisep, dan inti tubuh tanpa memerlukan peralatan.</p>
+                        
+                        <table class="benefits-table">
+                            <tr>
+                                <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
+                                <td>100-200 kcal/15 menit</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Intensitas</td>
+                                <td>Sedang-Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-clock"></i> Durasi Ideal</td>
+                                <td>3-5 set (10-15 repetisi)</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="health-benefits">
+                            <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                            <ul class="benefits-list">
+                                <li>Menguatkan otot dada, bahu, dan lengan</li>
+                                <li>Melatih kekuatan inti tubuh</li>
+                                <li>Meningkatkan daya tahan otot</li>
+                                <li>Dapat dilakukan di mana saja tanpa alat</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-band-aid"></i> Resistance Band</div>
-                    <div class="equipment-item"><i class="fas fa-anchor"></i> Anchor Point</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Menyediakan ketahanan konstan sepanjang gerakan</li>
-                        <li>Melatih otot stabilizer yang sering terabaikan</li>
-                        <li>Ideal untuk rehabilitasi dan latihan mobilitas</li>
-                        <li>Membakar 150-300 kalori per jam</li>
-                        <li>Dapat menargetkan semua kelompok otot utama</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>150-300 kalori/jam (tergantung resistensi)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-dumbbell"></i> Jenis Latihan</td>
-                            <td>Bicep Curl, Shoulder Press, Leg Extension, dll</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>30-45 menit, 2-3x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-chart-line"></i> Progresi</td>
-                            <td>Tingkatkan resistensi band atau repetisi</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Pemula, rehabilitasi, latihan mobilitas</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sangat Rendah</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
-        <section id="flexibility" class="sport-category">
-            <h3><i class="fas fa-spa"></i> Fleksibilitas & Keseimbangan</h3>
+        <!-- Flexibility Section -->
+        <section id="flexibility" class="sports-category" data-category="flexibility">
+            <h3><i class="fas fa-spa"></i> Latihan Fleksibilitas</h3>
             
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Yoga" class="sport-image">
-                    <div class="sport-name">Yoga</div>
-                </div>
-                
-                <p class="sport-description">Yoga menggabungkan postur fisik, latihan pernapasan, dan meditasi untuk meningkatkan fleksibilitas, kekuatan, dan keseimbangan mental. Praktik kuno ini memiliki banyak gaya, dari yang lembut hingga menantang secara fisik, cocok untuk semua level.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
+            <div class="sports-grid">
+                <!-- Yoga -->
+                <div class="sports-item" data-intensity="low">
+                    <div class="sports-image-container">
+                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Yoga" class="sports-image">
+                        <div class="sports-name">Yoga</div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Ringan-Sedang</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-mat"></i> Matras Yoga</div>
-                    <div class="equipment-item"><i class="fas fa-brick"></i> Yoga Block</div>
-                    <div class="equipment-item"><i class="fas fa-scarf"></i> Yoga Strap</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan fleksibilitas dan rentang gerak sendi</li>
-                        <li>Memperkuat otot inti dan meningkatkan postur</li>
-                        <li>Mengurangi stres dan kecemasan melalui pernapasan</li>
-                        <li>Meningkatkan kesadaran tubuh dan keseimbangan</li>
-                        <li>Membantu mengelola nyeri kronis dan insomnia</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>150-400 kalori/jam (tergantung jenis yoga)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-spa"></i> Jenis Yoga</td>
-                            <td>Hatha, Vinyasa, Ashtanga, Yin, Restorative</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>30-90 menit, 3-7x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-chart-line"></i> Progresi</td>
-                            <td>Perdalam postur, tambah durasi hold</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua usia dan level kebugaran</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Rendah (dengan teknik tepat)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pilates" class="sport-image">
-                    <div class="sport-name">Pilates</div>
-                </div>
-                
-                <p class="sport-description">Pilates berfokus pada penguatan inti tubuh, meningkatkan fleksibilitas, dan kesadaran postural melalui gerakan terkontrol. Sistem latihan ini menekankan kualitas gerakan daripada kuantitas, ideal untuk rehabilitasi dan peningkatan kinerja atletik.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
+                    
+                    <div class="sports-content">
+                        <p class="sports-description">Yoga menggabungkan gerakan fisik, pernapasan, dan meditasi untuk meningkatkan fleksibilitas, kekuatan, dan keseimbangan tubuh serta ketenangan pikiran.</p>
+                        
+                        <table class="benefits-table">
+                            <tr>
+                                <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
+                                <td>200-400 kcal/jam</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Intensitas</td>
+                                <td>Rendah-Sedang</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-clock"></i> Durasi Ideal</td>
+                                <td>45-90 menit</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="health-benefits">
+                            <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                            <ul class="benefits-list">
+                                <li>Meningkatkan fleksibilitas dan keseimbangan</li>
+                                <li>Mengurangi stres dan kecemasan</li>
+                                <li>Memperbaiki postur tubuh</li>
+                                <li>Meningkatkan kesadaran tubuh dan pikiran</li>
+                            </ul>
+                        </div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Ringan-Sedang</span>
                 </div>
                 
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-mat"></i> Matras Pilates</div>
-                    <div class="fas fa-ring"></i> Magic Circle</div>
-                    <div class="equipment-item"><i class="fas fa-dumbbell"></i> Resistance Band</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Memperkuat otot inti dan meningkatkan postur tubuh</li>
-                        <li>Meningkatkan fleksibilitas dan koordinasi</li>
-                        <li>Mengurangi nyeri punggung dengan memperkuat otot pendukung</li>
-                        <li>Meningkatkan kesadaran tubuh dan kontrol motorik</li>
-                        <li>Membantu pemulihan cedera dan pencegahan cedera</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>180-350 kalori/jam (tergantung intensitas)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-spa"></i> Jenis Pilates</td>
-                            <td>Mat Pilates, Reformer, Cadillac, Tower</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>45-60 menit, 2-3x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-chart-line"></i> Progresi</td>
-                            <td>Tingkatkan kontrol dan kompleksitas gerakan</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua usia, terutama rehabilitasi</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sangat Rendah</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tai Chi" class="sport-image">
-                    <div class="sport-name">Tai Chi</div>
-                </div>
-                
-                <p class="sport-description">Tai Chi adalah seni bela diri Cina kuno yang menggabungkan gerakan lambat, pernapasan dalam, dan meditasi. Sering disebut sebagai "meditasi bergerak", praktik ini meningkatkan keseimbangan, fleksibilitas, dan relaksasi, ideal untuk semua usia terutama lansia.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
+                <!-- Pilates -->
+                <div class="sports-item" data-intensity="medium">
+                    <div class="sports-image-container">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pilates" class="sports-image">
+                        <div class="sports-name">Pilates</div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Sangat Ringan</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-shoe-prints"></i> Sepatu Nyaman</div>
-                    <div class="equipment-item"><i class="fas fa-water"></i> Ruang Terbuka</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan keseimbangan dan mengurangi risiko jatuh pada lansia</li>
-                        <li>Mengurangi stres dan meningkatkan relaksasi</li>
-                        <li>Meningkatkan fleksibilitas dan rentang gerak</li>
-                        <li>Meningkatkan sirkulasi dan fungsi kardiovaskular</li>
-                        <li>Meningkatkan fokus mental dan kesadaran tubuh</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>100-200 kalori/jam</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-spa"></i> Gaya Tai Chi</td>
-                            <td>Yang, Chen, Wu, Sun, Hao</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>20-60 menit, bisa dilakukan setiap hari</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-chart-line"></i> Progresi</td>
-                            <td>Pelajari lebih banyak bentuk dan urutan</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Semua usia, terutama lansia</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sangat Rendah</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="team" class="sport-category">
-            <h3><i class="fas fa-users"></i> Olahraga Tim</h3>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Basketball" class="sport-image">
-                    <div class="sport-name">Bola Basket</div>
-                </div>
-                
-                <p class="sport-description">Bola basket adalah olahraga tim dinamis yang menggabungkan kardio intens, keterampilan teknis, dan kerja sama tim. Permainan ini melatih kecepatan, kelincahan, koordinasi mata-tangan, dan daya tahan kardiovaskular sambil membangun semangat tim.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
+                    
+                    <div class="sports-content">
+                        <p class="sports-description">Pilates berfokus pada penguatan otot inti, meningkatkan fleksibilitas, dan kesadaran tubuh melalui gerakan terkontrol dan pernapasan.</p>
+                        
+                        <table class="benefits-table">
+                            <tr>
+                                <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
+                                <td>250-400 kcal/jam</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Intensitas</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-clock"></i> Durasi Ideal</td>
+                                <td>45-60 menit</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="health-benefits">
+                            <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
+                            <ul class="benefits-list">
+                                <li>Menguatkan otot inti dan postur tubuh</li>
+                                <li>Meningkatkan fleksibilitas dan koordinasi</li>
+                                <li>Mengurangi nyeri punggung</li>
+                                <li>Meningkatkan kontrol tubuh dan kesadaran</li>
+                            </ul>
+                        </div>
                     </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Tinggi</span>
                 </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-basketball-ball"></i> Bola Basket</div>
-                    <div class="equipment-item"><i class="fas fa-shoe-prints"></i> Sepatu Basket</div>
-                    <div class="equipment-item"><i class="fas fa-tshirt"></i> Jersey</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan kesehatan kardiovaskular dan kapasitas paru-paru</li>
-                        <li>Membangun kekuatan tubuh bagian bawah dan inti</li>
-                        <li>Meningkatkan koordinasi tangan-mata dan keterampilan motorik</li>
-                        <li>Membakar 400-700 kalori per jam</li>
-                        <li>Mengembangkan keterampilan sosial dan kerja sama tim</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>400-700 kalori/jam (tergantung intensitas)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-running"></i> Keterampilan Utama</td>
-                            <td>Dribbling, Shooting, Passing, Defense</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>1-2 jam, 2-3x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-users"></i> Jumlah Pemain</td>
-                            <td>5 lawan 5 (standar)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Anak-anak hingga dewasa</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sedang (pergelangan kaki, lutut, jari)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Soccer" class="sport-image">
-                    <div class="sport-name">Sepak Bola</div>
-                </div>
-                
-                <p class="sport-description">Sepak bola adalah olahraga tim paling populer di dunia yang menggabungkan daya tahan, kecepatan, dan keterampilan teknis. Permainan ini melatih kerja sama tim, strategi, dan kebugaran kardiovaskular sambil membangun kekuatan kaki dan inti tubuh.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                    </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Tinggi</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-futbol"></i> Bola Sepak</div>
-                    <div class="equipment-item"><i class="fas fa-shoe-prints"></i> Sepatu Bola</div>
-                    <div class="equipment-item"><i class="fas fa-tshirt"></i> Jersey</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan daya tahan kardiovaskular dan kapasitas aerobik</li>
-                        <li>Membangun kekuatan otot kaki dan inti tubuh</li>
-                        <li>Meningkatkan koordinasi dan keseimbangan</li>
-                        <li>Membakar 500-900 kalori per jam</li>
-                        <li>Mengembangkan keterampilan sosial dan kerja sama tim</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>500-900 kalori/jam (tergantung posisi)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-running"></i> Keterampilan Utama</td>
-                            <td>Dribbling, Passing, Shooting, Tactics</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>1-2 jam, 2-3x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-users"></i> Jumlah Pemain</td>
-                            <td>11 lawan 11 (standar)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Anak-anak hingga dewasa</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sedang (pergelangan kaki, lutut, hamstring)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="sport-item">
-                <div class="sport-image-container">
-                    <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Volleyball" class="sport-image">
-                    <div class="sport-name">Bola Voli</div>
-                </div>
-                
-                <p class="sport-description">Bola voli adalah olahraga tim yang menggabungkan kekuatan, kecepatan reaksi, dan kerja sama tim. Permainan ini melatih koordinasi mata-tangan, kekuatan tubuh bagian atas, dan daya ledak kaki sambil mengembangkan strategi tim dan komunikasi.</p>
-                
-                <div class="intensity-indicator">
-                    <span class="intensity-label">Intensitas:</span>
-                    <div class="intensity-level">
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot active"></div>
-                        <div class="intensity-dot"></div>
-                        <div class="intensity-dot"></div>
-                    </div>
-                    <span class="intensity-value" style="margin-left: 10px;">Sedang-Tinggi</span>
-                </div>
-                
-                <div class="equipment-list">
-                    <div class="equipment-item"><i class="fas fa-volleyball-ball"></i> Bola Voli</div>
-                    <div class="equipment-item"><i class="fas fa-net"></i> Net Voli</div>
-                    <div class="equipment-item"><i class="fas fa-tshirt"></i> Jersey</div>
-                </div>
-                
-                <div class="health-benefits">
-                    <h5><i class="fas fa-heartbeat"></i> Manfaat Kesehatan</h5>
-                    <ul class="benefits-list">
-                        <li>Meningkatkan kekuatan tubuh bagian atas dan inti</li>
-                        <li>Melatih kecepatan reaksi dan refleks</li>
-                        <li>Meningkatkan koordinasi mata-tangan</li>
-                        <li>Membakar 300-600 kalori per jam</li>
-                        <li>Mengembangkan keterampilan sosial dan komunikasi tim</li>
-                    </ul>
-                </div>
-                
-                <table class="benefits-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i class="fas fa-fire"></i> Kalori Terbakar</td>
-                            <td>300-600 kalori/jam (tergantung intensitas)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-running"></i> Keterampilan Utama</td>
-                            <td>Serve, Pass, Set, Spike, Block, Dig</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-clock"></i> Durasi Ideal</td>
-                            <td>1-2 jam, 1-2x/minggu</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-users"></i> Jumlah Pemain</td>
-                            <td>6 lawan 6 (standar)</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-user-plus"></i> Cocok Untuk</td>
-                            <td>Remaja hingga dewasa</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fas fa-exclamation-triangle"></i> Risiko Cedera</td>
-                            <td>Sedang (bahu, jari, pergelangan kaki)</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
     </main>
@@ -1532,7 +863,7 @@
             <div class="footer-grid">
                 <div class="footer-about">
                     <h3>WEHEALTY</h3>
-                    <p>Platform kesehatan terpadu untuk membantu Anda mencapai hidup yang lebih sehat dan bahagia melalui panduan nutrisi, olahraga, dan perawatan diri.</p>
+                    <p>Platform kesehatan terpadu untuk membantu Anda mencapai hidup yang lebih sehat dan bahagia.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1543,28 +874,28 @@
                 <div class="footer-links">
                     <h4>Tautan Cepat</h4>
                     <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="foods.html">Makanan</a></li>
-                        <li><a href="sports.html">Olahraga</a></li>
-                        <li><a href="skincare.html">Skincare</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="foods.html"><i class="fas fa-chevron-right"></i> Makanan</a></li>
+                        <li><a href="sports.html"><i class="fas fa-chevron-right"></i> Olahraga</a></li>
+                        <li><a href="skincare.html"><i class="fas fa-chevron-right"></i> Skincare</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Layanan</h4>
                     <ul>
-                        <li><a href="index.html#services">Konsultasi</a></li>
-                        <li><a href="index.html#tools">Alat Kesehatan</a></li>
-                        <li><a href="index.html#about">Tentang Kami</a></li>
-                        <li><a href="index.html#contact">Kontak</a></li>
+                        <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Konsultasi</a></li>
+                        <li><a href="index.html#tools"><i class="fas fa-chevron-right"></i> Alat Kesehatan</a></li>
+                        <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> Tentang saya</a></li>
+                        <li><a href="index.html#contact"><i class="fas fa-chevron-right"></i> Kontak</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Informasi</h4>
                     <ul>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kebijakan Privasi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Syarat & Ketentuan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -1575,10 +906,8 @@
     </footer>
 
     <!-- Floating Action Buttons -->
-    <div class="fab-container">
-        <div class="fab" id="print-fab" title="Cetak Panduan">
-            <i class="fas fa-print"></i>
-        </div>
+    <div class="fab" id="print-btn" title="Cetak Panduan">
+        <i class="fas fa-print"></i>
     </div>
 
     <a href="#" class="back-to-top" id="back-to-top" title="Kembali ke Atas">
@@ -1588,8 +917,7 @@
     <script>
         // Mobile menu toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const nav = document.querySelector('nav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('main-nav').classList.toggle('active');
         });
 
         // Back to top button
@@ -1602,47 +930,62 @@
             }
         });
 
+        // Smooth scrolling for back to top
+        document.getElementById('back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
         // Print functionality
-        document.getElementById('print-fab').addEventListener('click', function() {
+        document.getElementById('print-btn').addEventListener('click', function() {
             window.print();
         });
 
-        // Animate elements on scroll
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.sport-item');
-            const windowHeight = window.innerHeight;
+        // Search functionality
+        document.getElementById('sports-search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const sportsItems = document.querySelectorAll('.sports-item');
             
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const elementVisible = 150;
+            sportsItems.forEach(item => {
+                const sportsName = item.querySelector('.sports-name').textContent.toLowerCase();
+                const sportsDesc = item.querySelector('.sports-description').textContent.toLowerCase();
                 
-               if (elementPosition < windowHeight - elementVisible) {
-                    element.style.animation = 'scaleIn 0.6s ease-out forwards';
+                if (sportsName.includes(searchTerm) || sportsDesc.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
                 }
             });
-        };
-
-        // Set initial state for animated elements
-        const animatedElements = document.querySelectorAll('.food-item');
-        animatedElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'scale(0.95)';
         });
 
-        // Initialize scroll animations
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Run once on load
+        // Category filter
+        document.getElementById('sports-category').addEventListener('change', function() {
+            const selectedCategory = this.value;
+            const categories = document.querySelectorAll('.sports-category');
+            
+            categories.forEach(category => {
+                if (selectedCategory === 'all' || category.dataset.category === selectedCategory) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        // Intensity filter
+        document.getElementById('intensity-filter').addEventListener('change', function() {
+            const selectedIntensity = this.value;
+            const sportsItems = document.querySelectorAll('.sports-item');
+            
+            sportsItems.forEach(item => {
+                if (selectedIntensity === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    const hasIntensity = item.dataset.intensity === selectedIntensity;
+                    item.style.display = hasIntensity ? 'block' : 'none';
                 }
             });
         });
@@ -1651,7 +994,7 @@
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    document.querySelector('nav').style.display = 'none';
+                   document.getElementById('main-nav').classList.remove('active');
                 }
             });
         });
