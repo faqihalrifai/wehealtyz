@@ -8,55 +8,109 @@ const demoModal = document.getElementById('demo-modal');
 const closeModal = document.querySelector('.close-modal');
 
 // =============================================
-// Mobile Menu Functionality
+// Responsive Initialization
+// =============================================
+function initializeResponsiveElements() {
+  // Set initial menu state based on screen size
+  if (window.innerWidth <= 768) {
+    navMenu.style.display = 'none';
+  } else {
+    navMenu.style.display = 'flex';
+  }
+}
+
+// =============================================
+// Mobile Menu Functionality (Improved)
 // =============================================
 function setupMobileMenu() {
   mobileMenuBtn.addEventListener('click', toggleMobileMenu);
   
+  // Enhanced resize handler with debounce
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      navMenu.style.display = 'flex';
-    } else {
-      navMenu.style.display = 'none';
-    }
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 768) {
+        navMenu.style.display = 'flex';
+        mobileMenuBtn.classList.remove('active');
+      } else {
+        navMenu.style.display = 'none';
+      }
+    }, 250);
   });
   
-  // Close mobile menu when clicking a link
+  // Close mobile menu when clicking a link (improved)
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768) {
         navMenu.style.display = 'none';
+        mobileMenuBtn.classList.remove('active');
       }
     });
   });
 }
 
 function toggleMobileMenu() {
-  navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+  const isOpen = navMenu.style.display === 'flex';
+  navMenu.style.display = isOpen ? 'none' : 'flex';
+  mobileMenuBtn.classList.toggle('active', !isOpen);
+  
+  // Improved accessibility
+  if (!isOpen) {
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    navMenu.setAttribute('aria-hidden', 'false');
+  } else {
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    navMenu.setAttribute('aria-hidden', 'true');
+  }
 }
 
 // =============================================
-// Modal Functionality
+// Modal Functionality (Improved)
 // =============================================
 function setupModal() {
+  if (!demoBtn || !demoModal) return;
+  
   demoBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    demoModal.style.display = 'block';
+    openModal();
   });
 
-  closeModal.addEventListener('click', () => {
-    demoModal.style.display = 'none';
-  });
+  closeModal?.addEventListener('click', closeModalFn);
 
   window.addEventListener('click', (event) => {
     if (event.target === demoModal) {
-      demoModal.style.display = 'none';
+      closeModalFn();
+    }
+  });
+  
+  // Handle keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (demoModal.style.display === 'block' && e.key === 'Escape') {
+      closeModalFn();
     }
   });
 }
 
+function openModal() {
+  demoModal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  demoModal.setAttribute('aria-hidden', 'false');
+  
+  // Focus on first interactive element
+  const focusable = demoModal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (focusable) focusable.focus();
+}
+
+function closeModalFn() {
+  demoModal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  demoModal.setAttribute('aria-hidden', 'true');
+  demoBtn.focus();
+}
+
 // =============================================
-// Health Calculators
+// Health Calculators (Improved Responsiveness)
 // =============================================
 function setupCalculators() {
   // BMI Calculator
@@ -64,14 +118,58 @@ function setupCalculators() {
   
   // Calorie Calculator
   document.getElementById('calculate-calories')?.addEventListener('click', calculateCalories);
+  
+  // Responsive calculator tabs
+  setupCalculatorTabs();
+}
+
+function setupCalculatorTabs() {
+  const calculatorTabs = document.querySelectorAll('.calculator-tab');
+  if (!calculatorTabs.length) return;
+  
+  calculatorTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      calculatorTabs.forEach(t => t.classList.remove('active'));
+      
+      // Add active class to clicked tab
+      tab.classList.add('active');
+      
+      // Show corresponding calculator
+      const calculatorId = tab.getAttribute('data-calculator');
+      document.querySelectorAll('.calculator-content').forEach(content => {
+        content.style.display = 'none';
+      });
+      document.getElementById(calculatorId).style.display = 'block';
+      
+      // Adjust layout for mobile
+      if (window.innerWidth <= 768) {
+        document.getElementById(calculatorId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  
+  // Activate first tab by default
+  if (calculatorTabs.length > 0) {
+    calculatorTabs[0].click();
+  }
 }
 
 function calculateBMI() {
-  const height = parseFloat(document.getElementById('height').value) / 100;
-  const weight = parseFloat(document.getElementById('weight').value);
+  const heightInput = document.getElementById('height');
+  const weightInput = document.getElementById('weight');
   
-  if (!height || !weight) {
-    alert("Silakan masukkan tinggi dan berat badan Anda");
+  const height = parseFloat(heightInput.value) / 100;
+  const weight = parseFloat(weightInput.value);
+  
+  // Improved validation
+  if (!height || isNaN(height) || height <= 0) {
+    showInputError(heightInput, "Masukkan tinggi badan yang valid");
+    return;
+  }
+  
+  if (!weight || isNaN(weight) || weight <= 0) {
+    showInputError(weightInput, "Masukkan berat badan yang valid");
     return;
   }
 
@@ -79,6 +177,26 @@ function calculateBMI() {
   const { category, healthRisks, recommendations } = getBMICategory(bmi);
   
   displayBMIResults(bmi, category, healthRisks, recommendations);
+}
+
+function showInputError(inputElement, message) {
+  const errorElement = document.createElement('div');
+  errorElement.className = 'input-error';
+  errorElement.textContent = message;
+  
+  // Remove existing error if any
+  const existingError = inputElement.nextElementSibling;
+  if (existingError && existingError.classList.contains('input-error')) {
+    existingError.remove();
+  }
+  
+  inputElement.insertAdjacentElement('afterend', errorElement);
+  inputElement.focus();
+  
+  // Remove error after 3 seconds
+  setTimeout(() => {
+    errorElement.remove();
+  }, 3000);
 }
 
 function getBMICategory(bmi) {
@@ -141,6 +259,8 @@ function generateRecommendations(type) {
 }
 
 function displayBMIResults(bmi, category, healthRisks, recommendations) {
+  const resultContainer = document.getElementById('bmi-details');
+  
   document.getElementById('bmi-result').innerHTML = `
     <strong>BMI Anda:</strong> ${bmi}<br>
     <strong>Kategori:</strong> ${category}
@@ -163,18 +283,50 @@ function displayBMIResults(bmi, category, healthRisks, recommendations) {
     <ul>${recommendations}</ul>
   `;
   
-  document.getElementById('bmi-details').style.display = 'block';
+  resultContainer.style.display = 'block';
+  
+  // Scroll to results on mobile
+  if (window.innerWidth <= 768) {
+    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 }
 
 function calculateCalories() {
-  const age = parseInt(document.getElementById('age').value);
-  const gender = document.getElementById('gender').value;
-  const height = parseFloat(document.getElementById('height-calc').value);
-  const weight = parseFloat(document.getElementById('weight-calc').value);
-  const activity = parseFloat(document.getElementById('activity').value);
+  const ageInput = document.getElementById('age');
+  const genderInput = document.getElementById('gender');
+  const heightInput = document.getElementById('height-calc');
+  const weightInput = document.getElementById('weight-calc');
+  const activityInput = document.getElementById('activity');
   
-  if (!age || !gender || !height || !weight || !activity) {
-    alert("Silakan lengkapi semua data");
+  const age = parseInt(ageInput.value);
+  const gender = genderInput.value;
+  const height = parseFloat(heightInput.value);
+  const weight = parseFloat(weightInput.value);
+  const activity = parseFloat(activityInput.value);
+  
+  // Improved validation
+  if (!age || isNaN(age) || age <= 0 || age > 120) {
+    showInputError(ageInput, "Masukkan usia yang valid (1-120)");
+    return;
+  }
+  
+  if (!gender) {
+    showInputError(genderInput, "Pilih jenis kelamin");
+    return;
+  }
+  
+  if (!height || isNaN(height) || height <= 0) {
+    showInputError(heightInput, "Masukkan tinggi badan yang valid");
+    return;
+  }
+  
+  if (!weight || isNaN(weight) || weight <= 0) {
+    showInputError(weightInput, "Masukkan berat badan yang valid");
+    return;
+  }
+  
+  if (!activity || isNaN(activity) || activity <= 0) {
+    showInputError(activityInput, "Pilih tingkat aktivitas");
     return;
   }
 
@@ -199,6 +351,8 @@ function calculateMacros(calories, weight) {
 }
 
 function displayCalorieResults(calories, protein, fat, carbs) {
+  const resultContainer = document.getElementById('calorie-details');
+  
   document.getElementById('calorie-result').innerHTML = `
     <strong>Kebutuhan Kalori Harian Anda:</strong> ${calories} kkal<br>
     <strong>Maintenance:</strong> ${calories} kkal/hari<br>
@@ -227,18 +381,43 @@ function displayCalorieResults(calories, protein, fat, carbs) {
     </ul>
   `;
   
-  document.getElementById('calorie-details').style.display = 'block';
+  resultContainer.style.display = 'block';
+  
+  // Scroll to results on mobile
+  if (window.innerWidth <= 768) {
+    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 }
 
 // =============================================
-// AI Health Assistant
+// AI Health Assistant (Improved)
 // =============================================
 function setupAIAssistant() {
-  document.getElementById('ai-input').addEventListener('keypress', (e) => {
+  const aiInput = document.getElementById('ai-input');
+  const aiSendBtn = document.getElementById('ai-send-btn');
+  
+  if (!aiInput || !aiSendBtn) return;
+  
+  aiInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') sendAIMessage();
   });
   
-  document.getElementById('ai-send-btn')?.addEventListener('click', sendAIMessage);
+  aiSendBtn.addEventListener('click', sendAIMessage);
+  
+  // Responsive adjustments for chat
+  adjustChatHeight();
+  window.addEventListener('resize', adjustChatHeight);
+}
+
+function adjustChatHeight() {
+  const chatContainer = document.getElementById('ai-chat-container');
+  if (!chatContainer) return;
+  
+  if (window.innerWidth <= 768) {
+    chatContainer.style.height = '60vh';
+  } else {
+    chatContainer.style.height = '400px';
+  }
 }
 
 function sendAIMessage() {
@@ -255,11 +434,14 @@ function sendAIMessage() {
   // Show typing indicator
   const typingId = showTypingIndicator();
   
-  // Simulate AI processing
+  // Simulate AI processing (in a real app, this would be an API call)
   setTimeout(() => {
     removeTypingIndicator(typingId);
     const aiResponse = getAIResponse(message);
     addChatMessage(aiResponse.response, 'bot', aiResponse.sources);
+    
+    // Auto-scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   }, 800);
 }
 
@@ -270,24 +452,51 @@ function addChatMessage(message, sender, sources = []) {
   
   if (sender === 'bot') {
     messageDiv.innerHTML = `
-      ${message}
-      ${renderSources(sources)}
+      <div class="ai-message-content">
+        ${message}
+        ${renderSources(sources)}
+      </div>
       ${renderAITools(message)}
     `;
   } else {
-    messageDiv.textContent = message;
+    messageDiv.innerHTML = `
+      <div class="ai-message-content">${message}</div>
+    `;
   }
   
   chatMessages.appendChild(messageDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
+  
+  // Reattach event listeners for new buttons
+  if (sender === 'bot') {
+    const editBtn = messageDiv.querySelector('.ai-edit-btn');
+    const saveBtn = messageDiv.querySelector('.ai-save-btn');
+    
+    if (editBtn) {
+      editBtn.addEventListener('click', () => insertExample(message));
+    }
+    
+    if (saveBtn) {
+      saveBtn.addEventListener('click', saveConversation);
+    }
+  }
 }
 
 function showTypingIndicator() {
   const chatMessages = document.getElementById('ai-chat-messages');
   const typingDiv = document.createElement('div');
-  typingDiv.className = 'ai-message bot';
+  typingDiv.className = 'ai-message bot ai-typing';
   typingDiv.id = 'typing-indicator';
-  typingDiv.innerHTML = '<span class="ai-loading"></span> Sedang menganalisis...';
+  typingDiv.innerHTML = `
+    <div class="ai-message-content">
+      <span class="ai-loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      Sedang menganalisis...
+    </div>
+  `;
   chatMessages.appendChild(typingDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
   return 'typing-indicator';
@@ -302,32 +511,48 @@ function getAIResponse(message) {
   // In a real app, this would call an API
   const responses = {
     "makanan sehat": {
-      response: "Untuk makanan sehat, fokus pada sayuran hijau, buah-buahan, protein tanpa lemak, dan biji-bijian utuh.",
+      response: "Untuk makanan sehat, fokus pada sayuran hijau, buah-buahan, protein tanpa lemak, dan biji-bijian utuh. Contoh makanan sehat termasuk brokoli, bayam, salmon, dada ayam, quinoa, dan alpukat.",
       sources: ["WHO Nutrition Guidelines", "Dietary Guidelines for Americans"]
     },
     "olahraga": {
-      response: "Disarankan olahraga 150 menit per minggu dengan intensitas sedang atau 75 menit intensitas tinggi.",
-      sources: ["American Heart Association"]
+      response: "Disarankan olahraga 150 menit per minggu dengan intensitas sedang atau 75 menit intensitas tinggi. Kombinasikan dengan latihan kekuatan 2-3 kali per minggu untuk hasil terbaik.",
+      sources: ["American Heart Association", "CDC Physical Activity Guidelines"]
     },
     "skincare": {
-      response: "Rutinitas skincare dasar: pembersih, pelembab, dan tabir surya. Sesuaikan dengan jenis kulit Anda.",
+      response: "Rutinitas skincare dasar: pembersih, pelembab, dan tabir surya. Sesuaikan dengan jenis kulit Anda. Untuk kulit kering, gunakan pelembab lebih kental. Untuk kulit berminyak, pilih produk oil-free.",
       sources: ["American Academy of Dermatology"]
     },
+    "tidur": {
+      response: "Orang dewasa membutuhkan 7-9 jam tidur per malam. Tips untuk tidur lebih baik: jadwal teratur, hindari kafein sore/malam, ciptakan lingkungan tidur yang nyaman, dan batasi screen time sebelum tidur.",
+      sources: ["National Sleep Foundation"]
+    },
+    "stres": {
+      response: "Untuk mengelola stres, coba teknik seperti: latihan pernapasan, meditasi, olahraga teratur, menjaga hubungan sosial, dan manajemen waktu yang baik. Jika stres berkepanjangan, pertimbangkan untuk berkonsultasi dengan profesional.",
+      sources: ["American Psychological Association"]
+    },
     "default": {
-      response: "Saya adalah asisten kesehatan digital. Silakan tanyakan tentang nutrisi, olahraga, atau perawatan kesehatan umum.",
+      response: "Saya adalah asisten kesehatan digital WEHEALTYZ. Silakan tanyakan tentang nutrisi, olahraga, kesehatan mental, atau perawatan kesehatan umum. Contoh pertanyaan: 'Apa makanan sehat untuk jantung?' atau 'Berapa lama olahraga yang direkomendasikan?'",
       sources: []
     }
   };
 
   const lowerMessage = message.toLowerCase();
-  return responses[lowerMessage] || responses['default'];
+  
+  // Check for keywords in message
+  for (const [keyword, response] of Object.entries(responses)) {
+    if (lowerMessage.includes(keyword)) {
+      return response;
+    }
+  }
+  
+  return responses['default'];
 }
 
 function renderSources(sources) {
   if (!sources || sources.length === 0) return '';
   return `
     <div class="ai-sources">
-      <strong>Sumber:</strong>
+      <strong>Sumber Terpercaya:</strong>
       <ul>${sources.map(source => `<li>${source}</li>`).join('')}</ul>
     </div>
   `;
@@ -336,17 +561,48 @@ function renderSources(sources) {
 function renderAITools(message) {
   return `
     <div class="ai-tools">
-      <button onclick="insertExample('${message}')">Edit Pertanyaan</button>
-      <button onclick="saveConversation()">Simpan Percakapan</button>
+      <button class="ai-edit-btn">Edit Pertanyaan</button>
+      <button class="ai-save-btn">Simpan Percakapan</button>
     </div>
   `;
 }
 
+function saveConversation() {
+  const chatMessages = document.getElementById('ai-chat-messages');
+  const messages = Array.from(chatMessages.children).map(msg => {
+    return msg.classList.contains('user') 
+      ? `Anda: ${msg.textContent}`
+      : `Asisten: ${msg.querySelector('.ai-message-content')?.textContent.trim()}`;
+  }).join('\n\n');
+  
+  // In a real app, this would save to server or local storage
+  const blob = new Blob([messages], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'wehealtyz-chat-' + new Date().toISOString().slice(0, 10) + '.txt';
+  a.click();
+  
+  // Show confirmation
+  const confirmation = document.createElement('div');
+  confirmation.className = 'ai-message bot';
+  confirmation.innerHTML = `
+    <div class="ai-message-content">
+      Percakapan telah disimpan sebagai file teks.
+    </div>
+  `;
+  chatMessages.appendChild(confirmation);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
 // =============================================
-// Demo Account System
+// Demo Account System (Improved)
 // =============================================
 function setupDemoAccounts() {
-  document.querySelectorAll('.demo-role').forEach(button => {
+  const demoRoleButtons = document.querySelectorAll('.demo-role');
+  if (!demoRoleButtons.length) return;
+  
+  demoRoleButtons.forEach(button => {
     button.addEventListener('click', (e) => {
       loginDemo(e.target.dataset.role);
     });
@@ -360,14 +616,48 @@ function loginDemo(role) {
     patient: 'Anda login sebagai Pasien. Anda dapat mengakses alat kesehatan dan konsultasi.'
   };
 
-  alert(messages[role]);
+  // Show modal confirmation on mobile
+  if (window.innerWidth <= 768) {
+    const modal = document.createElement('div');
+    modal.className = 'demo-confirmation';
+    modal.innerHTML = `
+      <div class="demo-confirmation-content">
+        <p>${messages[role]}</p>
+        <button class="demo-confirm-btn">OK</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    modal.querySelector('.demo-confirm-btn').addEventListener('click', () => {
+      modal.remove();
+      completeDemoLogin(role);
+    });
+  } else {
+    completeDemoLogin(role);
+  }
+}
+
+function completeDemoLogin(role) {
   demoModal.style.display = 'none';
   showDemoBadge(role);
   enableDemoFeatures(role);
+  
+  // Show welcome message in chat if available
+  if (document.getElementById('ai-chat-messages')) {
+    const welcomeMessages = {
+      admin: 'Selamat datang, Admin! Anda sekarang dapat mengakses semua fitur sistem, termasuk manajemen pengguna dan laporan.',
+      doctor: 'Selamat datang, Dokter! Anda sekarang dapat mengakses rekam medis pasien dan fitur konsultasi.',
+      patient: 'Selamat datang! Anda sekarang dapat menggunakan semua alat kesehatan dan memulai konsultasi dengan dokter.'
+    };
+    
+    addChatMessage(welcomeMessages[role], 'bot');
+  }
 }
 
 function showDemoBadge(role) {
   const header = document.querySelector('header');
+  if (!header) return;
+  
   header.style.position = 'relative';
   header.style.borderTop = '3px solid var(--secondary)';
   
@@ -379,31 +669,154 @@ function showDemoBadge(role) {
   const badge = document.createElement('div');
   badge.className = 'demo-badge';
   badge.textContent = `DEMO MODE: ${role.toUpperCase()}`;
+  badge.setAttribute('aria-live', 'polite');
   header.appendChild(badge);
 }
 
 function enableDemoFeatures(role) {
   // Role-specific feature enabling
-  if (role === 'admin') {
-    // Enable admin features
-  } else if (role === 'doctor') {
-    // Enable doctor features
-  } else if (role === 'patient') {
-    // Enable patient features
-  }
+  const features = {
+    admin: ['admin-tools', 'reports-section', 'user-management'],
+    doctor: ['patient-records', 'consultation-tools', 'prescription-section'],
+    patient: ['health-tools', 'appointment-section', 'personal-records']
+  };
+  
+  // In a real app, this would enable UI elements based on role
+  console.log(`Enabled features for ${role} role`);
+}
+
+// =============================================
+// Responsive Image Handling
+// =============================================
+function setupResponsiveImages() {
+  const images = document.querySelectorAll('img.responsive-img');
+  
+  images.forEach(img => {
+    // Ensure images don't overflow on small screens
+    img.style.maxWidth = '100%';
+    img.style.height = 'auto';
+    
+    // Handle lazy loading
+    if ('loading' in HTMLImageElement.prototype) {
+      img.loading = 'lazy';
+    }
+  });
+}
+
+// =============================================
+// Form Validation
+// =============================================
+function setupFormValidation() {
+  const forms = document.querySelectorAll('form:not(.no-validate)');
+  
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      if (!validateForm(form)) {
+        e.preventDefault();
+      }
+    });
+  });
+}
+
+function validateForm(form) {
+  let isValid = true;
+  const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+  
+  inputs.forEach(input => {
+    if (!input.value.trim()) {
+      showInputError(input, "Field ini wajib diisi");
+      isValid = false;
+    }
+    
+    // Email validation
+    if (input.type === 'email' && input.value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(input.value)) {
+        showInputError(input, "Masukkan alamat email yang valid");
+        isValid = false;
+      }
+    }
+    
+    // Password validation
+    if (input.type === 'password' && input.value) {
+      if (input.value.length < 6) {
+        showInputError(input, "Password minimal 6 karakter");
+        isValid = false;
+      }
+    }
+  });
+  
+  return isValid;
+}
+
+// =============================================
+// Responsive Tables
+// =============================================
+function setupResponsiveTables() {
+  const tables = document.querySelectorAll('table');
+  
+  tables.forEach(table => {
+    if (window.innerWidth <= 768) {
+      makeTableResponsive(table);
+    }
+  });
+  
+  window.addEventListener('resize', () => {
+    tables.forEach(table => {
+      if (window.innerWidth <= 768) {
+        makeTableResponsive(table);
+      } else {
+        undoTableResponsive(table);
+      }
+    });
+  });
+}
+
+function makeTableResponsive(table) {
+  if (table.classList.contains('responsive')) return;
+  
+  table.classList.add('responsive');
+  const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent);
+  const rows = table.querySelectorAll('tbody tr');
+  
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    cells.forEach((cell, index) => {
+      cell.setAttribute('data-label', headers[index]);
+    });
+  });
+}
+
+function undoTableResponsive(table) {
+  if (!table.classList.contains('responsive')) return;
+  
+  table.classList.remove('responsive');
+  const cells = table.querySelectorAll('td');
+  cells.forEach(cell => {
+    cell.removeAttribute('data-label');
+  });
 }
 
 // =============================================
 // Utility Functions
 // =============================================
 function scrollToSection(sectionId) {
-  document.getElementById(sectionId)?.scrollIntoView({ 
-    behavior: 'smooth' 
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+  
+  const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+  const offset = section.offsetTop - headerHeight;
+  
+  window.scrollTo({
+    top: offset,
+    behavior: 'smooth'
   });
 }
 
 function insertExample(text) {
   const input = document.getElementById('ai-input');
+  if (!input) return;
+  
   input.value = text;
   input.focus();
 }
@@ -412,11 +825,45 @@ function insertExample(text) {
 // Initialize Application
 // =============================================
 document.addEventListener('DOMContentLoaded', function() {
+  initializeResponsiveElements();
   setupMobileMenu();
   setupModal();
   setupCalculators();
   setupAIAssistant();
   setupDemoAccounts();
+  setupResponsiveImages();
+  setupFormValidation();
+  setupResponsiveTables();
+  
+  // Initialize any tooltips
+  if (window.tippy) {
+    tippy('[data-tippy-content]', {
+      placement: 'top',
+      animation: 'shift-away',
+      duration: 200,
+      arrow: true
+    });
+  }
   
   console.log('WEHEALTYZ application initialized');
+});
+
+// Handle page transitions for SPA-like feel
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a[href^="#"]:not([href="#"]), a[data-internal-link]');
+  
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        scrollToSection(href.substring(1));
+      } else if (link.hasAttribute('data-internal-link')) {
+        e.preventDefault();
+        // In a real SPA, this would load content dynamically
+        window.location.href = href;
+      }
+    });
+  });
 });
