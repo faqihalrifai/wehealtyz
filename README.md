@@ -34,7 +34,7 @@ Website kesehatan sederhana untuk edukasi gaya hidup sehat, tips nutrisi, dan ke
 
 JIKA TIDAK BISA DIBUKA ATAU TIDAK MUNCUL GAMBAR,KLIK LINK DIBAWAH INI YANG BERISI SCREENSHOOT YANG TELAH DIBUAT PDF.
 
-file:///C:/Users/asusz/Desktop/my%20repo/images/screenshoot.pdf
+(https://pdfhost.io/v/5SgN7gESYC_screenshoot) [pdf screenshoot wehealty]
 
 ---
 
