@@ -33,7 +33,8 @@ Website kesehatan sederhana untuk edukasi gaya hidup sehat, tips nutrisi, dan ke
 | ![Home](https://ibb.co/0yr0qCTv) | ![AI Powered](https://ibb.co/FbYmjQ75) | ![Layanan](https://ibb.co/nqf4fG7N) | ![Footer Modern](https://ibb.co/gNW0HrL) |
 
 JIKA TIDAK BISA DIBUKA ATAU TIDAK MUNCUL GAMBAR,KLIK LINK DIBAWAH INI YANG BERISI SCREENSHOOT YANG TELAH DIBUAT PDF.
-(file:///C:/Users/asusz/Desktop/my%20repo/images/screenshoot.pdf)
+
+file:///C:/Users/asusz/Desktop/my%20repo/images/screenshoot.pdf
 
 ---
 
